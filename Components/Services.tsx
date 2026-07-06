@@ -1,53 +1,53 @@
 'use client'
 import { useEffect, useRef } from 'react'
-import { ArrowUpRight, TrendingUp, Share2, Globe, Zap, Palette, PenTool } from 'lucide-react'
+import { ArrowUpRight, TrendingUp, Share2, PenTool, FileText, Megaphone, CalendarDays } from 'lucide-react'
 
 const services = [
   {
     Icon: TrendingUp,
-    title: 'Search Engine Optimization',
-    desc: 'Page 1 rankings that bring qualified buyers to your door. Technical, on-page & off-page authority — we handle every layer of the SEO stack.',
+    title: 'Search Engine Optimization (SEO)',
+    desc: "Improve your website's visibility on search engines with our comprehensive SEO services. From keyword research and on-page optimization to technical SEO and local SEO, we help your business rank higher and attract organic traffic.",
     tag: 'Most Popular',
     accent: '#00e5a0',
     size: 'large',
   },
   {
-    Icon: Share2,
+    Icon: Megaphone,
     title: 'Social Media Marketing',
-    desc: 'Scroll-stopping content that builds communities and converts followers into loyal customers.',
-    tag: 'High ROI',
-    accent: '#00b8ff',
-    size: 'small',
-  },
-  {
-    Icon: Globe,
-    title: 'Web Design & Development',
-    desc: 'Fast, beautiful, conversion-optimized websites built for the modern web.',
-    tag: 'SEO-Ready',
-    accent: '#a78bfa',
-    size: 'small',
-  },
-  {
-    Icon: Zap,
-    title: 'Performance Marketing',
-    desc: 'Google Ads & Meta campaigns engineered to generate leads, not just impressions.',
-    tag: 'Data-Driven',
-    accent: '#00e5a0',
-    size: 'small',
-  },
-  {
-    Icon: Palette,
-    title: 'Graphic Design & Branding',
-    desc: 'Visual identity that makes your brand instantly recognizable and impossible to forget.',
-    tag: 'Creative',
+    desc: 'Build a powerful online presence with strategic social media marketing. We create engaging content, manage your accounts, and develop campaigns that increase brand awareness and engagement.',
+    tag: 'Community Growth',
     accent: '#00b8ff',
     size: 'small',
   },
   {
     Icon: PenTool,
-    title: 'Content Writing',
-    desc: 'SEO-driven content that ranks, engages, and builds lasting authority in your niche.',
-    tag: 'Authority',
+    title: 'Content Marketing',
+    desc: 'We create valuable, informative, and engaging content that builds trust, strengthens your brand authority, and converts visitors into loyal customers.',
+    tag: 'Brand Trust',
+    accent: '#a78bfa',
+    size: 'small',
+  },
+  {
+    Icon: FileText,
+    title: 'Blog Writing',
+    desc: 'SEO-optimized blog writing that educates your audience, improves search engine rankings, and establishes your brand as an industry expert.',
+    tag: 'SEO-Ready',
+    accent: '#00e5a0',
+    size: 'small',
+  },
+  {
+    Icon: Share2,
+    title: 'Paid Advertising',
+    desc: 'Reach your ideal customers faster with high-performing Meta Ads and Google Ads campaigns focused on maximizing ROI and qualified leads.',
+    tag: 'Data-Driven',
+    accent: '#00b8ff',
+    size: 'small',
+  },
+  {
+    Icon: CalendarDays,
+    title: 'Content Planning',
+    desc: 'Customized monthly content calendars that align with your business goals, ensuring every piece of content supports your marketing strategy.',
+    tag: 'Consistency',
     accent: '#a78bfa',
     size: 'small',
   },
@@ -66,7 +66,7 @@ export default function Services() {
   }, [])
 
   return (
-    <section id="services" ref={ref} className="relative py-28 px-6 bg-[#080808] overflow-hidden">
+    <section id="services" ref={ref} className="relative py-28 top-0 px-6 bg-[#080808] overflow-hidden">
 
       {/* subtle bg grid */}
       <div
@@ -112,13 +112,13 @@ export default function Services() {
 
           <div className="max-w-sm">
             <p className="font-['DM_Sans',sans-serif] text-[14.5px] text-white/40 leading-[1.8]">
-              Full-suite digital marketing under one roof. Every service is designed to compound — the more you stack, the stronger the results.
+              Full-suite digital marketing under one roof, customized to your goals, audience, and industry — every service is designed to compound.
             </p>
             <a
               href="#contact"
               className="group inline-flex items-center gap-2 mt-5 font-['DM_Sans',sans-serif] text-[13px] font-[600] text-white/60 hover:text-white transition-colors duration-200"
             >
-              See all case studies
+              Book your free consultation
               <ArrowUpRight size={13} className="transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </a>
           </div>
@@ -251,7 +251,7 @@ export default function Services() {
               Not sure which service you need?
             </p>
             <p className="font-['DM_Sans',sans-serif] text-[13.5px] text-white/40">
-              Book a free 30-min strategy call — we'll map out exactly what will move the needle for you.
+              Book your free consultation — we'll map out exactly what will move the needle for your business.
             </p>
           </div>
           <a
@@ -259,7 +259,7 @@ export default function Services() {
             className="flex-shrink-0 group inline-flex items-center gap-2 font-['DM_Sans',sans-serif] font-[600] text-[13.5px] text-[#080808] px-6 py-3.5 rounded-full transition-all duration-300 hover:-translate-y-[2px] hover:shadow-[0_12px_32px_rgba(0,229,160,0.28)] whitespace-nowrap"
             style={{ background: 'linear-gradient(135deg,#00e5a0,#00b8ff)' }}
           >
-            Book Free Strategy Call
+            Book Your Free Consultation
             <ArrowUpRight size={14} className="transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
           </a>
         </div>

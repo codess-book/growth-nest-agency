@@ -4,7 +4,7 @@ import { useState } from 'react'
 export default function WhatsAppFloat() {
   const [hovered, setHovered] = useState(false)
 
-  const phone   = '91XXXXXXXXXX'          // ← replace with real number
+  const phone   = '916264745500'          // Growth Next — real number, WhatsApp format (country code, no +, no spaces)
   const message = 'Hi! I found you on your website and would like to know more about your services.'
   const url     = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`
 
@@ -31,7 +31,7 @@ export default function WhatsAppFloat() {
           pointerEvents: 'none',
         }}
       >
-        💬 Chat with us
+        Chat with us
       </div>
 
       {/* Button */}

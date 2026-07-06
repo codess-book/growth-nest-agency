@@ -1,25 +1,27 @@
 'use client'
 import { useEffect, useRef, useState } from 'react'
-import { ArrowRight, Star, TrendingUp, Users, Award, Zap } from 'lucide-react'
+import { ArrowRight, Star, TrendingUp, Users, Award, Zap, Target, Sparkles } from 'lucide-react'
 
+// replace when client shares real numbers (traffic %, leads/month, review count etc.)
 const stats = [
-  { value: '340+', label: 'Brands Scaled',   icon: TrendingUp },
-  { value: '8.2x', label: 'Avg. ROAS',       icon: Zap        },
-  { value: '97%',  label: 'Client Retention', icon: Star       },
-  { value: '5yr',  label: 'Industry Exp.',    icon: Award      },
+  { value: 'Custom',  label: 'Strategies Built for You', icon: TrendingUp },
+  { value: 'Data',    label: 'Driven Decisions',          icon: Zap        },
+  { value: 'SEO',     label: '& Performance Focused',     icon: Star       },
+  { value: 'AI',      label: 'Powered Marketing Tools',   icon: Award      },
 ]
 
 const marqueeItems = [
-  'SEO Domination', 'Paid Ads', 'Social Media', 'Web Development',
-  'Brand Strategy', 'Performance Marketing', 'Content Creation', 'Growth Hacking',
+  'Social Media Marketing', 'SEO', 'Content Marketing',
+  'Blog Writing', 'Paid Advertising', 'Content Planning',
 ]
 
+// placeholder cards — swap "value" for real client metrics once available (traffic %, leads/month, review score)
 const floatingCards = [
   {
-    icon: TrendingUp,
-    label: 'Organic Traffic',
-    value: '+284%',
-    sub: 'vs last quarter',
+    icon: Target,
+    label: 'Our Focus',
+    value: 'ROI-First',
+    sub: 'every campaign',
     color: 'from-emerald-500/20 to-emerald-400/5',
     border: 'border-emerald-500/20',
     iconColor: 'text-emerald-400',
@@ -28,9 +30,9 @@ const floatingCards = [
   },
   {
     icon: Users,
-    label: 'New Leads',
-    value: '1,240',
-    sub: 'this month',
+    label: 'Approach',
+    value: 'Custom',
+    sub: 'strategy per client',
     color: 'from-cyan-500/20 to-cyan-400/5',
     border: 'border-cyan-500/20',
     iconColor: 'text-cyan-400',
@@ -38,10 +40,10 @@ const floatingCards = [
     delay: '0.4s',
   },
   {
-    icon: Star,
-    label: 'Google Rating',
-    value: '4.9 ★',
-    sub: '120+ reviews',
+    icon: Sparkles,
+    label: 'Consultation',
+    value: 'Free',
+    sub: 'no obligation',
     color: 'from-amber-500/20 to-amber-400/5',
     border: 'border-amber-500/20',
     iconColor: 'text-amber-400',
@@ -84,7 +86,6 @@ export default function Hero() {
         const pulse = 0.3 + 0.7 * (0.5 + 0.5 * Math.sin(t * d.speed + d.phase))
         const cx = d.x * canvas.width
         const cy = d.y * canvas.height
-        // distance from center glow
         const dx = d.x - 0.5, dy = d.y - 0.5
         const dist = Math.sqrt(dx * dx + dy * dy)
         const alpha = pulse * (1 - dist * 1.4) * 0.45
@@ -112,25 +113,20 @@ export default function Hero() {
     >
 
       {/* ── Background layers ── */}
-      {/* radial glow center */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[600px] rounded-full"
           style={{ background: 'radial-gradient(ellipse at center, rgba(0,229,160,0.07) 0%, transparent 65%)' }} />
-        {/* top-left accent */}
         <div className="absolute -top-32 -left-32 w-[500px] h-[500px] rounded-full"
           style={{ background: 'radial-gradient(circle, rgba(0,184,255,0.05) 0%, transparent 60%)' }} />
-        {/* bottom-right accent */}
         <div className="absolute -bottom-20 -right-20 w-[400px] h-[400px] rounded-full"
           style={{ background: 'radial-gradient(circle, rgba(0,229,160,0.04) 0%, transparent 60%)' }} />
       </div>
 
-      {/* animated dot grid */}
       <canvas
         ref={canvasRef}
         className="absolute inset-0 w-full h-full pointer-events-none opacity-80"
       />
 
-      {/* top border accent line */}
       <div className="absolute top-0 left-0 right-0 h-px"
         style={{ background: 'linear-gradient(90deg, transparent, rgba(0,229,160,0.4) 50%, transparent)' }} />
 
@@ -153,7 +149,7 @@ export default function Hero() {
                   <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />
                 </span>
                 <span className="text-[12px] font-medium text-white/60 tracking-wide">
-                  Now accepting new clients — Q3 2025
+                  Now accepting new clients
                 </span>
               </div>
             </div>
@@ -163,14 +159,14 @@ export default function Hero() {
               className={` font-[800] text-[clamp(42px,5.5vw,80px)] leading-[1.04] tracking-[-2px] text-white mb-6 transition-all duration-700 ${ready ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
               style={{ transitionDelay: '0.15s' }}
             >
-              We Don't Just{' '}
+              Grow{' '}
               <br className="hidden sm:block" />
               <span className="relative inline-block">
                 <span
                   className="bg-clip-text text-transparent"
                   style={{ backgroundImage: 'linear-gradient(135deg, #00e5a0 0%, #00b8ff 60%, #a78bfa 100%)' }}
                 >
-                  Market.
+                  Smarter.
                 </span>
                 {/* underline squiggle */}
                 <svg className="absolute -bottom-2 left-0 w-full" height="6" viewBox="0 0 200 6" preserveAspectRatio="none">
@@ -184,10 +180,9 @@ export default function Hero() {
                   </defs>
                 </svg>
               </span>
-              {' '}We{' '}
+              {' '}Market{' '}
               <br className="hidden sm:block" />
-              Grow{' '}
-              <span className="text-white/25">Brands.</span>
+              <span className="text-white/25">Better.</span>
             </h1>
 
             {/* Sub */}
@@ -195,9 +190,10 @@ export default function Hero() {
               className={`text-[17px] text-white/45 leading-[1.75] max-w-[500px] mb-10 font-['DM_Sans',sans-serif] transition-all duration-700 ${ready ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
               style={{ transitionDelay: '0.25s' }}
             >
-              Growth Nest is a performance-first digital agency. We combine
-              data-driven strategy with bold creative to help ambitious brands
-              dominate their market — faster.
+              Growth Next helps businesses establish a strong digital presence
+              through innovative, results-driven marketing strategies — Social
+              Media, SEO, Content Marketing, Blogging, Paid Advertising, and
+              Content Planning, all customized to your goals and industry.
             </p>
 
             {/* CTAs */}
@@ -210,18 +206,18 @@ export default function Hero() {
                 className="group relative inline-flex items-center gap-2.5 font-['DM_Sans',sans-serif] font-semibold text-[14.5px] text-[#080808] px-7 py-3.5 rounded-full overflow-hidden transition-all duration-300 hover:-translate-y-[2px] hover:shadow-[0_12px_32px_rgba(0,229,160,0.35)]"
                 style={{ background: 'linear-gradient(135deg,#00e5a0,#00b8ff)' }}
               >
-                Start Growing Today
+                Book Your Free Consultation
                 <ArrowRight size={16} className="transition-transform duration-300 group-hover:translate-x-1" />
               </a>
 
               <a
-                href="#portfolio"
+                href="#services"
                 className="inline-flex items-center gap-2 font-['DM_Sans',sans-serif] font-medium text-[14px] text-white/50 hover:text-white transition-colors duration-200 group"
               >
                 <span className="w-8 h-8 rounded-full border border-white/15 flex items-center justify-center group-hover:border-white/35 transition-colors">
                   <ArrowRight size={13} className="rotate-[45deg] group-hover:rotate-0 transition-transform duration-300" />
                 </span>
-                See Our Work
+                See Our Services
               </a>
             </div>
 
@@ -248,20 +244,16 @@ export default function Hero() {
             {/* Central glowing orb */}
             <div className="absolute inset-0 flex items-center justify-center">
               <div className="relative w-[280px] h-[280px]">
-                {/* outer ring */}
                 <div className="absolute inset-0 rounded-full border border-emerald-400/10 animate-[spin_18s_linear_infinite]" />
                 <div className="absolute inset-4 rounded-full border border-cyan-400/10 animate-[spin_12s_linear_infinite_reverse]" />
-                {/* glow core */}
                 <div className="absolute inset-8 rounded-full"
                   style={{ background: 'radial-gradient(circle, rgba(0,229,160,0.18) 0%, rgba(0,184,255,0.08) 50%, transparent 70%)' }} />
-                {/* center icon */}
                 <div className="absolute inset-0 flex items-center justify-center">
                   <div className="w-20 h-20 rounded-3xl flex items-center justify-center"
                     style={{ background: 'linear-gradient(135deg,rgba(0,229,160,0.15),rgba(0,184,255,0.1))', border: '1px solid rgba(0,229,160,0.25)' }}>
                     <TrendingUp size={36} strokeWidth={1.5} className="text-emerald-400" />
                   </div>
                 </div>
-                {/* orbit dots */}
                 {[0, 72, 144, 216, 288].map((deg, i) => (
                   <div
                     key={i}
@@ -278,7 +270,7 @@ export default function Hero() {
               </div>
             </div>
 
-            {/* Floating metric cards */}
+            {/* Floating cards */}
             {floatingCards.map(({ icon: Icon, label, value, sub, color, border, iconColor, pos, delay }) => (
               <div
                 key={label}

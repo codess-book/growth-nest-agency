@@ -1,72 +1,37 @@
 'use client'
 import { useEffect, useRef } from 'react'
-import { ArrowUpRight, CheckCircle2, TrendingUp, Users, Award, Clock } from 'lucide-react'
-
+import {
+  ArrowUpRight, CheckCircle2, Sparkles, BarChart3, PenTool, TrendingUp,
+  MessageCircle, Wallet, Cpu, Target, Search, ClipboardList, Rocket, LineChart, FileBarChart,
+} from 'lucide-react'
+import FounderCard from './Foundercard'
 const values = [
-  {
-    icon: TrendingUp,
-    title: 'Performance First',
-    desc: "Every decision we make is backed by data. If it doesn't move the needle, we don't do it.",
-    accent: '#00e5a0',
-  },
-  {
-    icon: Users,
-    title: 'Client Obsessed',
-    desc: "Your growth is our growth. We treat every brand like it's our own — with full ownership and urgency.",
-    accent: '#00b8ff',
-  },
-  {
-    icon: Award,
-    title: 'Quality Without Compromise',
-    desc: 'Premium work at every touchpoint. From strategy decks to final deliverables — nothing ships average.',
-    accent: '#a78bfa',
-  },
-  {
-    icon: Clock,
-    title: 'Always Ahead',
-    desc: "Digital moves fast. We stay ahead of algorithm changes, trends, and tools so you never fall behind.",
-    accent: '#00e5a0',
-  },
+  { icon: Sparkles,     title: 'Customized Marketing Strategies', desc: 'No one-size-fits-all playbooks — every strategy is built around your specific business goals and audience.', accent: '#00e5a0' },
+  { icon: BarChart3,    title: 'Data-Driven Decision Making',      desc: 'Every recommendation is backed by data, not guesswork.', accent: '#00b8ff' },
+  { icon: PenTool,      title: 'Creative Content That Converts',   desc: 'Content designed to engage first, and convert visitors into customers.', accent: '#a78bfa' },
+  { icon: TrendingUp,   title: 'SEO & Performance Focused',        desc: 'Every campaign is built with visibility and measurable performance in mind.', accent: '#00e5a0' },
+  { icon: MessageCircle,title: 'Transparent Communication',        desc: 'Clear reporting and honest updates — no jargon, no black boxes.', accent: '#00b8ff' },
+  { icon: Wallet,       title: 'Affordable Solutions',             desc: 'Effective digital marketing that fits businesses of every size.', accent: '#a78bfa' },
+  { icon: Cpu,          title: 'Latest AI & Marketing Tools',      desc: 'We use modern tools to work faster and smarter for your brand.', accent: '#00e5a0' },
+  { icon: Target,       title: 'Long-Term Growth Focus',           desc: 'We build for sustainable growth, not one-off wins.', accent: '#00b8ff' },
 ]
 
 const process = [
-  {
-    step: '01',
-    title: 'Discovery Call',
-    desc: 'We start with a deep-dive into your business — goals, audience, competitors, and current gaps. No templates, just real questions that matter.',
-    accent: '#00e5a0',
-    duration: '30 mins',
-  },
-  {
-    step: '02',
-    title: 'Strategy Blueprint',
-    desc: 'Our team crafts a custom growth roadmap tailored to your brand. Channels, timelines, KPIs — all mapped out clearly before we touch anything.',
-    accent: '#00b8ff',
-    duration: '3–5 days',
-  },
-  {
-    step: '03',
-    title: 'Creative Execution',
-    desc: 'We build, design, write, and launch — with obsessive attention to quality. Every asset is built to perform, not just look good.',
-    accent: '#a78bfa',
-    duration: 'Ongoing',
-  },
-  {
-    step: '04',
-    title: 'Launch & Optimise',
-    desc: 'We go live and enter continuous improvement mode. Weekly reports, A/B tests, and real-time pivots keep results compounding month after month.',
-    accent: '#fb923c',
-    duration: 'Monthly',
-  },
+  { step: '01', title: 'Business Discovery',                     desc: 'We begin by understanding your business, industry, target audience, competitors, and marketing goals. This helps us create a strategy tailored to your unique needs.', accent: '#00e5a0', icon: Search },
+  { step: '02', title: 'Strategy Planning',                       desc: 'Our team develops a customized digital marketing plan that includes content strategy, SEO, social media, and advertising recommendations designed to achieve your business objectives.', accent: '#00b8ff', icon: ClipboardList },
+  { step: '03', title: 'Content Creation & Campaign Execution',    desc: 'We create engaging content, optimize your digital assets, and launch marketing campaigns across the most effective platforms to maximize visibility and lead generation.', accent: '#a78bfa', icon: Rocket },
+  { step: '04', title: 'Performance Monitoring & Optimization',    desc: 'Using advanced analytics tools, we continuously monitor campaign performance, identify opportunities for improvement, and optimize strategies to achieve better results.', accent: '#fb923c', icon: LineChart },
+  { step: '05', title: 'Reporting & Growth',                       desc: 'Transparency is important to us. We provide detailed performance reports, actionable insights, and strategic recommendations to ensure continuous business growth and long-term success.', accent: '#00e5a0', icon: FileBarChart },
 ]
 
+// pulled directly from client's "Why Choose Us" — no invented numbers
 const highlights = [
-  '340+ brands scaled across India',
-  'Average 8.2x ROAS on paid campaigns',
-  '97% client retention rate',
-  'Specialists across 6 digital verticals',
-  '₹50Cr+ revenue generated for clients',
-  'ISO-standard quality processes',
+  'Customized marketing strategies for every client',
+  'Data-driven decision making',
+  'SEO & performance-focused execution',
+  'Transparent communication, always',
+  'Affordable digital marketing solutions',
+  'Latest AI & marketing tools',
 ]
 
 export default function About() {
@@ -109,7 +74,7 @@ export default function About() {
               className="reveal  font-[800] text-[clamp(36px,4.5vw,64px)] leading-[1.05] tracking-[-1.5px] text-white mb-6"
               style={{ opacity: 0, transform: 'translateY(24px)', transition: 'all 0.7s ease 0.1s' }}
             >
-              We're Not an Agency.{' '}
+              We're Not Just an Agency.{' '}
               <span
                 className="bg-clip-text text-transparent"
                 style={{ backgroundImage: 'linear-gradient(135deg,#00e5a0,#00b8ff)' }}
@@ -122,9 +87,10 @@ export default function About() {
               className="reveal font-['DM_Sans',sans-serif] text-[16px] text-white/45 leading-[1.85] mb-8 max-w-[500px]"
               style={{ opacity: 0, transform: 'translateY(24px)', transition: 'all 0.7s ease 0.2s' }}
             >
-              Growth Nest was built on a simple belief — most agencies focus on activity, not outcomes.
-              We do the opposite. Every strategy, every campaign, every creative is engineered
-              to produce measurable, compounding growth for your business.
+              At Growth Next, we help businesses establish a strong digital presence through
+              innovative and results-driven marketing strategies. Our goal is to help brands
+              attract the right audience, generate quality leads, and achieve measurable
+              business growth — whether you're a startup, local business, or growing brand.
             </p>
 
             <div
@@ -149,69 +115,17 @@ export default function About() {
                 transition: 'opacity 0.7s ease 0.4s, transform 0.7s ease 0.4s, box-shadow 0.3s',
               }}
             >
-              Work With Us
+              Book Your Free Consultation
               <ArrowUpRight size={14} className="transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </a>
           </div>
 
-          {/* Right — stat card */}
+          {/* Right — real founder photo, replaces the old abstract stat card */}
           <div
             className="reveal relative"
             style={{ opacity: 0, transform: 'translateX(32px)', transition: 'all 0.9s ease 0.3s' }}
           >
-            <div
-              className="relative rounded-3xl p-8 border border-white/[0.08] overflow-hidden"
-              style={{ background: 'linear-gradient(145deg, rgba(0,229,160,0.06) 0%, rgba(0,184,255,0.04) 100%)' }}
-            >
-              <div
-                className="absolute -top-4 -right-4 font-['Syne',sans-serif] font-[800] text-[120px] leading-none select-none pointer-events-none"
-                style={{ color: 'rgba(0,229,160,0.04)' }}
-              >
-                GN
-              </div>
-
-              <div className="relative z-10">
-                <p className="font-['DM_Sans',sans-serif] text-[11px] font-[600] tracking-[3px] uppercase text-white/30 mb-6">
-                  Since 2019
-                </p>
-
-                <div className="grid grid-cols-2 gap-4 mb-8">
-                  {[
-                    { v: '5+',   l: 'Years in Business' },
-                    { v: '340+', l: 'Brands Scaled'     },
-                    { v: '8.2x', l: 'Average ROAS'      },
-                    { v: '97%',  l: 'Retention Rate'    },
-                  ].map(({ v, l }) => (
-                    <div
-                      key={l}
-                      className="bg-white/[0.04] border border-white/[0.06] rounded-2xl p-4 hover:border-white/[0.12] transition-colors duration-200"
-                    >
-                      <div className="font-['Syne',sans-serif] font-[800] text-[30px] leading-none text-white mb-1">{v}</div>
-                      <div className="font-['DM_Sans',sans-serif] text-[11.5px] text-white/35">{l}</div>
-                    </div>
-                  ))}
-                </div>
-
-                <div className="border-t border-white/[0.07] pt-6">
-                  <p className="font-['DM_Sans',sans-serif] text-[14px] text-white/50 leading-[1.8] italic mb-4">
-                    "We don't measure success in impressions or followers. We measure it in
-                    revenue generated, leads closed, and brands that dominate their market."
-                  </p>
-                  <div className="flex items-center gap-3">
-                    <div
-                      className="w-9 h-9 rounded-full flex items-center justify-center font-['Syne',sans-serif] font-[700] text-[13px] text-[#080808]"
-                      style={{ background: 'linear-gradient(135deg,#00e5a0,#00b8ff)' }}
-                    >
-                      YD
-                    </div>
-                    <div>
-                      <div className="font-['DM_Sans',sans-serif] text-[13px] font-[500] text-white">yukta Daswani</div>
-                      <div className="font-['DM_Sans',sans-serif] text-[11px] text-white/35">Founder, Growth Nest</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <FounderCard />
           </div>
         </div>
       </div>
@@ -227,7 +141,7 @@ export default function About() {
               Our DNA
             </span>
             <h2 className="font-[800] text-[clamp(32px,4vw,52px)] leading-[1.1] tracking-[-1px] text-white">
-              What We Stand For
+              Why Choose Growth Next?
             </h2>
           </div>
 
@@ -275,25 +189,19 @@ export default function About() {
               How We Work
             </span>
             <h2 className=" font-[800] text-[clamp(32px,4vw,52px)] leading-[1.1] tracking-[-1px] text-white mb-4">
-              Our Process,{' '}
-              <span
-                className="bg-clip-text text-transparent"
-                style={{ backgroundImage: 'linear-gradient(135deg,#00e5a0,#00b8ff)' }}
-              >
-                Simplified.
-              </span>
+              Our Work Process
             </h2>
             <p className="font-['DM_Sans',sans-serif] text-[15px] text-white/40 max-w-lg mx-auto leading-relaxed">
-              From first call to full-scale growth — here's exactly how we turn your brand into a market leader.
+              From first call to full-scale growth — here's exactly how we work with you.
             </p>
           </div>
 
           {/* Process cards */}
           <div
-            className="reveal grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4"
+            className="reveal grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4"
             style={{ opacity: 0, transform: 'translateY(28px)', transition: 'all 0.7s ease 0.15s' }}
           >
-            {process.map(({ step, title, desc, accent, duration }, i) => (
+            {process.map(({ step, title, desc, accent, icon: Icon }, i) => (
               <div
                 key={step}
                 className="group relative rounded-3xl p-6 border border-white/[0.06] hover:border-white/[0.14] transition-all duration-500 overflow-hidden flex flex-col"
@@ -305,14 +213,6 @@ export default function About() {
                   style={{ background: `radial-gradient(circle at 0% 0%, ${accent}10, transparent 65%)` }}
                 />
 
-                {/* connector line (desktop) */}
-                {i < process.length - 1 && (
-                  <div
-                    className="hidden lg:block absolute top-[44px] -right-2 w-4 h-px z-20"
-                    style={{ background: `linear-gradient(90deg, ${accent}40, transparent)` }}
-                  />
-                )}
-
                 {/* step number */}
                 <div className="relative z-10 flex items-center justify-between mb-6">
                   <div
@@ -321,12 +221,7 @@ export default function About() {
                   >
                     {step}
                   </div>
-                  <span
-                    className="font-['DM_Sans',sans-serif] text-[10.5px] font-[600] tracking-[1.5px] uppercase px-2.5 py-1 rounded-full"
-                    style={{ color: accent, background: `${accent}10`, border: `1px solid ${accent}20` }}
-                  >
-                    {duration}
-                  </span>
+                  <Icon size={16} style={{ color: accent }} strokeWidth={1.8} />
                 </div>
 
                 {/* ghost big step */}
@@ -338,10 +233,10 @@ export default function About() {
                 </div>
 
                 <div className="relative z-10 flex flex-col flex-1">
-                  <h3 className="font-['Syne',sans-serif] font-[700] text-[17px] text-white mb-3 leading-snug">
+                  <h3 className="font-['Syne',sans-serif] font-[700] text-[15px] text-white mb-3 leading-snug">
                     {title}
                   </h3>
-                  <p className="font-['DM_Sans',sans-serif] text-[13px] text-white/40 leading-[1.75] flex-1">
+                  <p className="font-['DM_Sans',sans-serif] text-[12.5px] text-white/40 leading-[1.7] flex-1">
                     {desc}
                   </p>
                 </div>
@@ -361,10 +256,10 @@ export default function About() {
           >
             <div>
               <p className="font-['Syne',sans-serif] font-[700] text-[20px] text-white mb-1">
-                Ready to start your growth journey?
+                Ready to grow your business?
               </p>
               <p className="font-['DM_Sans',sans-serif] text-[13.5px] text-white/40">
-                Book a free discovery call — step 01 is on us.
+                Book your free consultation today and start your growth journey with Growth Next.
               </p>
             </div>
             <a
@@ -372,7 +267,7 @@ export default function About() {
               className="flex-shrink-0 group inline-flex items-center gap-2 font-['DM_Sans',sans-serif] font-[600] text-[13.5px] text-[#080808] px-6 py-3.5 rounded-full transition-all duration-300 hover:-translate-y-[2px] hover:shadow-[0_12px_32px_rgba(0,229,160,0.28)] whitespace-nowrap"
               style={{ background: 'linear-gradient(135deg,#00e5a0,#00b8ff)' }}
             >
-              Book Free Discovery Call
+              Book Your Free Consultation
               <ArrowUpRight size={14} className="transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </a>
           </div>

@@ -3,17 +3,21 @@ import { useState, useRef, useEffect } from 'react'
 import { ArrowUpRight, Mail, Phone, MapPin, Send, CheckCircle2, TrendingUp } from 'lucide-react'
 
 
-const WEB3FORMS_KEY  = '72a91354-4689-4714-ac09-b66243836969'       // later use clinet
-const OWNER_WHATSAPP = '917804872320'                     // 91 + number
+// ⚠️ TODO BEFORE LAUNCH: This key still points to a Web3Forms account, but the
+// original one in this file (72a91354-...) was tied to kuldeepsinghchouhan224@gmail.com,
+// NOT the client. Go to web3forms.com, sign up with daswaniyukta020@gmail.com,
+// confirm the email, and paste the new key below. Every lead goes wherever this key points.
+const WEB3FORMS_KEY  = '023c9418-05f1-4505-a5b2-59e48c656ea2'
+const OWNER_WHATSAPP = '916264745500'                     // 91 + client's real number
 // ─────────────────────────────────────────
 
 const services = [
-  'SEO Optimization',
   'Social Media Marketing',
-  'Web Development',
-  'Performance Marketing',
-  'Graphic Design & Branding',
-  'Content Writing',
+  'SEO',
+  'Content Marketing',
+  'Blog Writing',
+  'Paid Advertising',
+  'Content Planning',
 ]
 
 const budgets = [
@@ -27,27 +31,27 @@ const contactInfo = [
   {
     icon: Phone,
     label: 'Call Us',
-    value: '+91 78048 72320',
+    value: '+91 62647 45500',
     sub: 'Mon–Sat, 10am – 7pm',
-    href: 'tel:+917804872320',
+    href: 'tel:+916264745500',
     accent: '#00e5a0',
   },
   {
     icon: Mail,
     label: 'Email Us',
-    value: 'kuldeepsinghchouhan224@gmail.com',
-    sub: 'We reply within 4 hours',
-    href: 'mailto:kuldeepsinghchouhan224@gmail.com',
+    value: 'daswaniyukta020@gmail.com',
+    sub: "We'll get back to you soon",
+    href: 'mailto:daswaniyukta020@gmail.com',
     accent: '#00b8ff',
   },
-  {
-    icon: MapPin,
-    label: 'Visit Us',
-    value: 'Your City, India',
-    sub: 'By appointment only',
-    href: '#',
-    accent: '#a78bfa',
-  },
+  // {
+  //   icon: MapPin,
+  //   label: 'Visit Us',
+  //   value: 'Your City, India',
+  //   sub: 'By appointment only',
+  //   href: '#',
+  //   accent: '#a78bfa',
+  // },
 ]
 
 type FormState = {
@@ -92,14 +96,14 @@ export default function Contact() {
     setError('')
 
     try {
-      // ── STEP 1: Send email via Web3Forms to kuldeepsinghchouhan224@gmail.com ──
+      // ── STEP 1: Send email via Web3Forms to daswaniyukta020@gmail.com ──
       const emailRes = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           access_key:  WEB3FORMS_KEY,
-          subject:     `🚀 New Lead: ${form.name} — Growth Nest Website`,
-          from_name:   'Growth Nest Website',
+          subject:     `🚀 New Lead: ${form.name} — Growth Next Website`,
+          from_name:   'Growth Next Website',
           replyto:     form.email,
           name:        form.name,
           email:       form.email,
@@ -135,7 +139,7 @@ export default function Contact() {
       setSubmitted(true)
 
     } catch (err) {
-      setError('Something went wrong. Please WhatsApp us directly or email kuldeepsinghchouhan224@gmail.com')
+      setError('Something went wrong. Please WhatsApp us directly or email daswaniyukta020@gmail.com')
     } finally {
       setLoading(false)
     }
@@ -189,7 +193,7 @@ export default function Contact() {
             </span>
           </h2>
           <p className="font-['DM_Sans',sans-serif] text-[16px] text-white/40 max-w-xl mx-auto leading-relaxed">
-            Fill in the form and our team will get back to you within 4 hours with a custom strategy outline — completely free.
+            Fill in the form and our team will get back to you with a custom strategy outline — completely free.
           </p>
         </div>
 
@@ -217,7 +221,7 @@ export default function Contact() {
                     You're All Set! 🎉
                   </h3>
                   <p className="font-['DM_Sans',sans-serif] text-[15px] text-white/45 max-w-sm leading-relaxed mb-3">
-                    We've sent your details to our team via <span className="text-white/70">Email</span> and <span className="text-emerald-400">WhatsApp</span>. Expect a reply within 4 hours!
+                    We've sent your details to our team via <span className="text-white/70">Email</span> and <span className="text-emerald-400">WhatsApp</span>. We'll be in touch soon!
                   </p>
                   <p className="font-['DM_Sans',sans-serif] text-[13px] text-white/30 mb-8">
                     (Check your WhatsApp — a confirmation window may have opened)
@@ -387,9 +391,6 @@ export default function Contact() {
               </div>
               {[
                 'Free strategy audit — no strings attached',
-                'Dedicated account manager from day 1',
-                'Weekly performance reports',
-                'Cancel anytime — no lock-in contracts',
               ].map(item => (
                 <div key={item} className="flex items-start gap-2.5 mb-3 last:mb-0">
                   <CheckCircle2 size={13} className="text-emerald-400 mt-[3px] flex-shrink-0" strokeWidth={2} />
@@ -402,14 +403,11 @@ export default function Contact() {
             <div className="rounded-2xl border border-white/[0.06] p-5 flex items-center gap-4"
               style={{ background: 'rgba(255,255,255,0.02)' }}>
               <div className="relative flex-shrink-0">
-                <div className="w-10 h-10 rounded-full flex items-center justify-center font-['Syne',sans-serif] font-[800] text-[13px] text-[#080808]"
-                  style={{ background: 'linear-gradient(135deg,#00e5a0,#00b8ff)' }}>4h</div>
-                <span className="absolute -top-0.5 -right-0.5 w-3 h-3 rounded-full bg-emerald-400 border-2 border-[#080808]">
-                  <span className="absolute inset-0 rounded-full bg-emerald-400 animate-ping opacity-60" />
-                </span>
+                <div className="w-10 h-10 rounded-full flex items-center justify-center font-['Syne',sans-serif] font-[800] text-[18px] text-[#080808]"
+                  style={{ background: 'linear-gradient(135deg,#00e5a0,#00b8ff)' }}>👋</div>
               </div>
               <div>
-                <p className="font-['DM_Sans',sans-serif] text-[13.5px] font-[500] text-white">Average response time</p>
+                <p className="font-['DM_Sans',sans-serif] text-[13.5px] font-[500] text-white">We're here to help</p>
                 <p className="font-['DM_Sans',sans-serif] text-[12px] text-white/35">Mon–Sat, 10am–7pm IST</p>
               </div>
             </div>

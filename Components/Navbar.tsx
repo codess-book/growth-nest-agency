@@ -1,13 +1,14 @@
 'use client'
 import { useState, useEffect } from 'react'
-import { Menu, X, ChevronDown, TrendingUp, Globe, Share2, Palette, Zap } from 'lucide-react'
+import { Menu, X, ChevronDown, TrendingUp, Search, PenTool, FileText, Megaphone, CalendarDays } from 'lucide-react'
 
 const services = [
-  { label: 'SEO Optimization',        icon: TrendingUp, color: 'text-emerald-400' },
-  { label: 'Web Development',         icon: Globe,      color: 'text-blue-400'    },
-  { label: 'Social Media Marketing',  icon: Share2,     color: 'text-pink-400'    },
-  { label: 'Graphic Design',          icon: Palette,    color: 'text-orange-400'  },
-  { label: 'Performance Marketing',   icon: Zap,        color: 'text-yellow-400'  },
+  { label: 'Social Media Marketing', icon: Megaphone,    color: 'text-pink-400'    },
+  { label: 'SEO',                    icon: Search,       color: 'text-emerald-400' },
+  { label: 'Content Marketing',      icon: PenTool,      color: 'text-blue-400'    },
+  { label: 'Blog Writing',           icon: FileText,     color: 'text-orange-400'  },
+  { label: 'Paid Advertising',       icon: TrendingUp,   color: 'text-yellow-400'  },
+  { label: 'Content Planning',       icon: CalendarDays, color: 'text-purple-400'  },
 ]
 
 const links = [
@@ -42,14 +43,14 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
 
         {/* ── Logo ── */}
-        <a href="/" className="flex items-center gap-2.5 group" aria-label="Growth Nest Home">
-          {/* Icon mark */}
+        <a href="/" className="flex items-center gap-2.5 group" aria-label="Growth Next Home">
+          {/* Icon mark — placeholder, swap for final logo once client approves */}
           <div className="w-8 h-8 rounded-[8px] bg-gradient-to-br from-emerald-400 to-cyan-400 flex items-center justify-center flex-shrink-0">
             <TrendingUp size={15} strokeWidth={2.5} className="text-[#0a0a0a]" />
           </div>
           {/* Wordmark */}
           <span className="font-['',sans-serif] text-[19px] font-[800] tracking-[-0.3px] text-white leading-none">
-            Growth<span className="bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">Nest</span>
+            Growth<span className="bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">Next</span>
           </span>
         </a>
 
@@ -119,9 +120,9 @@ export default function Navbar() {
         <div className="hidden md:flex items-center gap-4">
           {/* Live pulse + phone */}
           <a
-            href="tel:+91XXXXXXXXXX"
+            href="tel:+916264745500"
             className="flex items-center gap-2 text-[12.5px] text-white/40 hover:text-white/75 transition-colors duration-200"
-            aria-label="Call Growth Nest"
+            aria-label="Call Growth Next"
           >
             <span className="relative flex h-[7px] w-[7px]">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-60" />
@@ -136,7 +137,7 @@ export default function Navbar() {
             className="relative flex items-center gap-1.5 text-[13px] font-semibold text-[#0a0a0a] px-5 py-2.5 rounded-full overflow-hidden group transition-all duration-200 hover:-translate-y-[1px] hover:shadow-[0_8px_24px_rgba(0,229,160,0.3)]"
             style={{ background: 'linear-gradient(135deg,#00e5a0,#00b8ff)' }}
           >
-            Get Free Audit
+            Free Consultation
             <span className="transition-transform duration-200 group-hover:translate-x-0.5">→</span>
           </a>
         </div>
@@ -185,12 +186,12 @@ export default function Navbar() {
               style={{ background: 'linear-gradient(135deg,#00e5a0,#00b8ff)' }}
               onClick={() => setMenuOpen(false)}
             >
-              Get Free Audit →
+              Free Consultation →
             </a>
           </div>
         </div>
       </div>
     </nav>
-    
+
   )
 }
