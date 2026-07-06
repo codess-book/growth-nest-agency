@@ -2,6 +2,11 @@
 import { useState, useRef, useEffect } from 'react'
 import { ArrowUpRight, Mail, Phone, MapPin, Send, CheckCircle2, TrendingUp } from 'lucide-react'
 
+
+const WEB3FORMS_KEY  = '72a91354-4689-4714-ac09-b66243836969'       // later use clinet
+const OWNER_WHATSAPP = '917804872320'                     // 91 + number
+// ─────────────────────────────────────────
+
 const services = [
   'SEO Optimization',
   'Social Media Marketing',
@@ -22,17 +27,17 @@ const contactInfo = [
   {
     icon: Phone,
     label: 'Call Us',
-    value: '+91 XXXXX XXXXX',
+    value: '+91 78048 72320',
     sub: 'Mon–Sat, 10am – 7pm',
-    href: 'tel:+91XXXXXXXXXX',
+    href: 'tel:+917804872320',
     accent: '#00e5a0',
   },
   {
     icon: Mail,
     label: 'Email Us',
-    value: 'hello@growthnext.in',
+    value: 'kuldeepsinghchouhan224@gmail.com',
     sub: 'We reply within 4 hours',
-    href: 'mailto:hello@growthnext.in',
+    href: 'mailto:kuldeepsinghchouhan224@gmail.com',
     accent: '#00b8ff',
   },
   {
@@ -59,6 +64,7 @@ export default function Contact() {
   const ref = useRef<HTMLElement>(null)
   const [submitted, setSubmitted] = useState(false)
   const [loading, setLoading]     = useState(false)
+  const [error, setError]         = useState('')
   const [form, setForm]           = useState<FormState>({
     name: '', email: '', phone: '', business: '',
     services: [], budget: '', message: '',
@@ -83,9 +89,56 @@ export default function Contact() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setLoading(true)
-    await new Promise(r => setTimeout(r, 1400))
-    setLoading(false)
-    setSubmitted(true)
+    setError('')
+
+    try {
+      // ── STEP 1: Send email via Web3Forms to kuldeepsinghchouhan224@gmail.com ──
+      const emailRes = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          access_key:  WEB3FORMS_KEY,
+          subject:     `🚀 New Lead: ${form.name} — Growth Nest Website`,
+          from_name:   'Growth Nest Website',
+          replyto:     form.email,
+          name:        form.name,
+          email:       form.email,
+          phone:       form.phone        || 'Not provided',
+          business:    form.business     || 'Not provided',
+          services:    form.services.join(', ') || 'Not selected',
+          budget:      form.budget       || 'Not selected',
+          message:     form.message      || 'No message',
+        }),
+      })
+
+      if (!emailRes.ok) throw new Error('Email send failed')
+
+      // ── STEP 2: Open WhatsApp with full lead details ──
+      const waMessage =
+`🚀 *New Lead — Growth Next*
+
+👤 *Name:* ${form.name}
+📧 *Email:* ${form.email}
+📞 *Phone:* ${form.phone || 'Not provided'}
+🏢 *Business:* ${form.business || 'Not provided'}
+🛠 *Services:* ${form.services.join(', ') || 'Not selected'}
+💰 *Budget:* ${form.budget || 'Not selected'}
+💬 *Message:* ${form.message || 'No message'}`
+
+      setTimeout(() => {
+        window.open(
+          `https://wa.me/${OWNER_WHATSAPP}?text=${encodeURIComponent(waMessage)}`,
+          '_blank'
+        )
+      }, 500)
+
+      setSubmitted(true)
+
+    } catch (err) {
+      setError('Something went wrong. Please WhatsApp us directly or email kuldeepsinghchouhan224@gmail.com')
+    } finally {
+      setLoading(false)
+    }
   }
 
   const inputClass = `
@@ -107,8 +160,6 @@ export default function Contact() {
         className="absolute top-0 right-0 w-[400px] h-[400px] pointer-events-none"
         style={{ background: 'radial-gradient(circle at 100% 0%, rgba(0,184,255,0.05) 0%, transparent 60%)' }}
       />
-
-      {/* top border line */}
       <div
         className="absolute top-0 left-0 right-0 h-px"
         style={{ background: 'linear-gradient(90deg, transparent, rgba(0,229,160,0.3) 50%, transparent)' }}
@@ -155,7 +206,6 @@ export default function Contact() {
               style={{ background: 'linear-gradient(145deg, rgba(0,229,160,0.04) 0%, rgba(255,255,255,0.02) 100%)' }}
             >
               {submitted ? (
-                /* ── Success state ── */
                 <div className="flex flex-col items-center justify-center py-16 text-center">
                   <div
                     className="w-16 h-16 rounded-2xl flex items-center justify-center mb-6"
@@ -164,13 +214,16 @@ export default function Contact() {
                     <CheckCircle2 size={32} className="text-emerald-400" strokeWidth={1.8} />
                   </div>
                   <h3 className="font-['Syne',sans-serif] font-[800] text-[28px] text-white mb-3">
-                    You're All Set!
+                    You're All Set! 🎉
                   </h3>
-                  <p className="font-['DM_Sans',sans-serif] text-[15px] text-white/45 max-w-sm leading-relaxed mb-8">
-                    We've received your message. Our team will reach out within 4 hours with a personalised growth strategy.
+                  <p className="font-['DM_Sans',sans-serif] text-[15px] text-white/45 max-w-sm leading-relaxed mb-3">
+                    We've sent your details to our team via <span className="text-white/70">Email</span> and <span className="text-emerald-400">WhatsApp</span>. Expect a reply within 4 hours!
+                  </p>
+                  <p className="font-['DM_Sans',sans-serif] text-[13px] text-white/30 mb-8">
+                    (Check your WhatsApp — a confirmation window may have opened)
                   </p>
                   <button
-                    onClick={() => setSubmitted(false)}
+                    onClick={() => { setSubmitted(false); setForm({ name:'', email:'', phone:'', business:'', services:[], budget:'', message:'' }) }}
                     className="font-['DM_Sans',sans-serif] text-[13px] text-white/40 hover:text-white transition-colors underline underline-offset-4"
                   >
                     Submit another enquiry
@@ -179,86 +232,50 @@ export default function Contact() {
               ) : (
                 <form onSubmit={handleSubmit} className="flex flex-col gap-5">
 
-                  {/* Row 1 — name + email */}
+                  {/* Row 1 */}
                   <div className="grid sm:grid-cols-2 gap-4">
                     <div className="flex flex-col gap-2">
-                      <label className="font-['DM_Sans',sans-serif] text-[12px] font-[500] tracking-wide text-white/40 uppercase">
-                        Your Name *
-                      </label>
-                      <input
-                        required
-                        type="text"
-                        placeholder="Rahul Sharma"
-                        className={inputClass}
-                        value={form.name}
-                        onChange={e => setForm(f => ({ ...f, name: e.target.value }))}
-                      />
+                      <label className="font-['DM_Sans',sans-serif] text-[12px] font-[500] tracking-wide text-white/40 uppercase">Your Name *</label>
+                      <input required type="text" placeholder="Rahul Sharma" className={inputClass}
+                        value={form.name} onChange={e => setForm(f => ({ ...f, name: e.target.value }))} />
                     </div>
                     <div className="flex flex-col gap-2">
-                      <label className="font-['DM_Sans',sans-serif] text-[12px] font-[500] tracking-wide text-white/40 uppercase">
-                        Email Address *
-                      </label>
-                      <input
-                        required
-                        type="email"
-                        placeholder="rahul@company.com"
-                        className={inputClass}
-                        value={form.email}
-                        onChange={e => setForm(f => ({ ...f, email: e.target.value }))}
-                      />
+                      <label className="font-['DM_Sans',sans-serif] text-[12px] font-[500] tracking-wide text-white/40 uppercase">Email Address *</label>
+                      <input required type="email" placeholder="rahul@company.com" className={inputClass}
+                        value={form.email} onChange={e => setForm(f => ({ ...f, email: e.target.value }))} />
                     </div>
                   </div>
 
-                  {/* Row 2 — phone + business */}
+                  {/* Row 2 */}
                   <div className="grid sm:grid-cols-2 gap-4">
                     <div className="flex flex-col gap-2">
-                      <label className="font-['DM_Sans',sans-serif] text-[12px] font-[500] tracking-wide text-white/40 uppercase">
-                        Phone Number
-                      </label>
-                      <input
-                        type="tel"
-                        placeholder="+91 XXXXX XXXXX"
-                        className={inputClass}
-                        value={form.phone}
-                        onChange={e => setForm(f => ({ ...f, phone: e.target.value }))}
-                      />
+                      <label className="font-['DM_Sans',sans-serif] text-[12px] font-[500] tracking-wide text-white/40 uppercase">Phone Number</label>
+                      <input type="tel" placeholder="+91 XXXXX XXXXX" className={inputClass}
+                        value={form.phone} onChange={e => setForm(f => ({ ...f, phone: e.target.value }))} />
                     </div>
                     <div className="flex flex-col gap-2">
-                      <label className="font-['DM_Sans',sans-serif] text-[12px] font-[500] tracking-wide text-white/40 uppercase">
-                        Business Name
-                      </label>
-                      <input
-                        type="text"
-                        placeholder="Your Brand Pvt. Ltd."
-                        className={inputClass}
-                        value={form.business}
-                        onChange={e => setForm(f => ({ ...f, business: e.target.value }))}
-                      />
+                      <label className="font-['DM_Sans',sans-serif] text-[12px] font-[500] tracking-wide text-white/40 uppercase">Business Name</label>
+                      <input type="text" placeholder="Your Brand Pvt. Ltd." className={inputClass}
+                        value={form.business} onChange={e => setForm(f => ({ ...f, business: e.target.value }))} />
                     </div>
                   </div>
 
-                  {/* Services multi-select */}
+                  {/* Services */}
                   <div className="flex flex-col gap-3">
-                    <label className="font-['DM_Sans',sans-serif] text-[12px] font-[500] tracking-wide text-white/40 uppercase">
-                      Services You Need
-                    </label>
+                    <label className="font-['DM_Sans',sans-serif] text-[12px] font-[500] tracking-wide text-white/40 uppercase">Services You Need</label>
                     <div className="flex flex-wrap gap-2">
                       {services.map(s => {
                         const active = form.services.includes(s)
                         return (
-                          <button
-                            key={s}
-                            type="button"
-                            onClick={() => toggleService(s)}
+                          <button key={s} type="button" onClick={() => toggleService(s)}
                             className="font-['DM_Sans',sans-serif] text-[12.5px] font-[500] px-4 py-2 rounded-full border transition-all duration-200"
                             style={{
-                              background: active ? 'rgba(0,229,160,0.12)' : 'rgba(255,255,255,0.03)',
-                              borderColor: active ? 'rgba(0,229,160,0.35)' : 'rgba(255,255,255,0.08)',
-                              color: active ? '#00e5a0' : 'rgba(255,255,255,0.4)',
+                              background:   active ? 'rgba(0,229,160,0.12)' : 'rgba(255,255,255,0.03)',
+                              borderColor:  active ? 'rgba(0,229,160,0.35)' : 'rgba(255,255,255,0.08)',
+                              color:        active ? '#00e5a0' : 'rgba(255,255,255,0.4)',
                             }}
                           >
-                            {active && <span className="mr-1">✓</span>}
-                            {s}
+                            {active && <span className="mr-1">✓</span>}{s}
                           </button>
                         )
                       })}
@@ -267,22 +284,17 @@ export default function Contact() {
 
                   {/* Budget */}
                   <div className="flex flex-col gap-3">
-                    <label className="font-['DM_Sans',sans-serif] text-[12px] font-[500] tracking-wide text-white/40 uppercase">
-                      Monthly Budget
-                    </label>
+                    <label className="font-['DM_Sans',sans-serif] text-[12px] font-[500] tracking-wide text-white/40 uppercase">Monthly Budget</label>
                     <div className="flex flex-wrap gap-2">
                       {budgets.map(b => {
                         const active = form.budget === b
                         return (
-                          <button
-                            key={b}
-                            type="button"
-                            onClick={() => setForm(f => ({ ...f, budget: b }))}
+                          <button key={b} type="button" onClick={() => setForm(f => ({ ...f, budget: b }))}
                             className="font-['DM_Sans',sans-serif] text-[12.5px] font-[500] px-4 py-2 rounded-full border transition-all duration-200"
                             style={{
-                              background: active ? 'rgba(0,184,255,0.12)' : 'rgba(255,255,255,0.03)',
+                              background:  active ? 'rgba(0,184,255,0.12)' : 'rgba(255,255,255,0.03)',
                               borderColor: active ? 'rgba(0,184,255,0.35)' : 'rgba(255,255,255,0.08)',
-                              color: active ? '#00b8ff' : 'rgba(255,255,255,0.4)',
+                              color:       active ? '#00b8ff' : 'rgba(255,255,255,0.4)',
                             }}
                           >
                             {b}
@@ -294,29 +306,28 @@ export default function Contact() {
 
                   {/* Message */}
                   <div className="flex flex-col gap-2">
-                    <label className="font-['DM_Sans',sans-serif] text-[12px] font-[500] tracking-wide text-white/40 uppercase">
-                      Tell Us About Your Goals
-                    </label>
-                    <textarea
-                      rows={4}
-                      placeholder="Briefly describe your business and what you want to achieve..."
+                    <label className="font-['DM_Sans',sans-serif] text-[12px] font-[500] tracking-wide text-white/40 uppercase">Tell Us About Your Goals</label>
+                    <textarea rows={4} placeholder="Briefly describe your business and what you want to achieve..."
                       className={`${inputClass} resize-none`}
-                      value={form.message}
-                      onChange={e => setForm(f => ({ ...f, message: e.target.value }))}
-                    />
+                      value={form.message} onChange={e => setForm(f => ({ ...f, message: e.target.value }))} />
                   </div>
 
+                  {/* Error */}
+                  {error && (
+                    <p className="font-['DM_Sans',sans-serif] text-[13px] text-red-400 text-center bg-red-400/10 border border-red-400/20 rounded-xl px-4 py-3">
+                      {error}
+                    </p>
+                  )}
+
                   {/* Submit */}
-                  <button
-                    type="submit"
-                    disabled={loading}
-                    className="group relative w-full flex items-center justify-center gap-2.5 font-['DM_Sans',sans-serif] font-[600] text-[15px] text-[#080808] py-4 rounded-2xl transition-all duration-300 hover:-translate-y-[2px] hover:shadow-[0_16px_40px_rgba(0,229,160,0.3)] disabled:opacity-70 disabled:cursor-not-allowed overflow-hidden"
+                  <button type="submit" disabled={loading}
+                    className="group w-full flex items-center justify-center gap-2.5 font-['DM_Sans',sans-serif] font-[600] text-[15px] text-[#080808] py-4 rounded-2xl transition-all duration-300 hover:-translate-y-[2px] hover:shadow-[0_16px_40px_rgba(0,229,160,0.3)] disabled:opacity-70 disabled:cursor-not-allowed"
                     style={{ background: 'linear-gradient(135deg,#00e5a0,#00b8ff)' }}
                   >
                     {loading ? (
                       <>
                         <div className="w-4 h-4 border-2 border-[#080808]/40 border-t-[#080808] rounded-full animate-spin" />
-                        Sending...
+                        Sending via Email & WhatsApp...
                       </>
                     ) : (
                       <>
@@ -326,9 +337,14 @@ export default function Contact() {
                     )}
                   </button>
 
-                  <p className="font-['DM_Sans',sans-serif] text-[11.5px] text-white/25 text-center">
-                    🔒 Your information is 100% confidential. No spam, ever.
-                  </p>
+                  {/* Dual notification note */}
+                  <div className="flex items-center justify-center gap-3 font-['DM_Sans',sans-serif] text-[11.5px] text-white/25">
+                    <span>📧 Email</span>
+                    <span className="w-1 h-1 rounded-full bg-white/20" />
+                    <span>💬 WhatsApp</span>
+                    <span className="w-1 h-1 rounded-full bg-white/20" />
+                    <span>🔒 100% Confidential</span>
+                  </div>
                 </form>
               )}
             </div>
@@ -339,49 +355,35 @@ export default function Contact() {
             className="reveal flex flex-col gap-4"
             style={{ opacity: 0, transform: 'translateX(28px)', transition: 'all 0.8s ease 0.25s' }}
           >
-
-            {/* Contact info cards */}
             {contactInfo.map(({ icon: Icon, label, value, sub, href, accent }) => (
-              <a
-                key={label}
-                href={href}
+              <a key={label} href={href}
                 className="group flex items-center gap-4 rounded-2xl border border-white/[0.06] p-5 hover:border-white/[0.13] transition-all duration-300 overflow-hidden relative"
                 style={{ background: 'rgba(255,255,255,0.02)' }}
               >
-                <div
-                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-400 pointer-events-none"
-                  style={{ background: `radial-gradient(circle at 0% 50%, ${accent}0a, transparent 60%)` }}
-                />
-                <div
-                  className="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0"
-                  style={{ background: `${accent}12`, border: `1px solid ${accent}25` }}
-                >
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+                  style={{ background: `radial-gradient(circle at 0% 50%, ${accent}0a, transparent 60%)` }} />
+                <div className="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0"
+                  style={{ background: `${accent}12`, border: `1px solid ${accent}25` }}>
                   <Icon size={18} strokeWidth={1.8} style={{ color: accent }} />
                 </div>
-                <div className="relative z-10">
+                <div className="relative z-10 min-w-0">
                   <p className="font-['DM_Sans',sans-serif] text-[11px] font-[600] tracking-[2px] uppercase text-white/35 mb-0.5">{label}</p>
-                  <p className="font-['DM_Sans',sans-serif] text-[14.5px] font-[500] text-white">{value}</p>
+                  <p className="font-['DM_Sans',sans-serif] text-[13.5px] font-[500] text-white truncate">{value}</p>
                   <p className="font-['DM_Sans',sans-serif] text-[12px] text-white/35">{sub}</p>
                 </div>
-                <ArrowUpRight size={14} className="ml-auto text-white/20 group-hover:text-white/60 transition-colors duration-200 relative z-10" />
+                <ArrowUpRight size={14} className="ml-auto text-white/20 group-hover:text-white/60 transition-colors duration-200 relative z-10 flex-shrink-0" />
               </a>
             ))}
 
-            {/* Why us card */}
-            <div
-              className="rounded-2xl border border-white/[0.07] p-6"
-              style={{ background: 'linear-gradient(145deg, rgba(0,229,160,0.05) 0%, rgba(0,184,255,0.03) 100%)' }}
-            >
+            {/* Why us */}
+            <div className="rounded-2xl border border-white/[0.07] p-6"
+              style={{ background: 'linear-gradient(145deg, rgba(0,229,160,0.05) 0%, rgba(0,184,255,0.03) 100%)' }}>
               <div className="flex items-center gap-2 mb-4">
-                <div
-                  className="w-7 h-7 rounded-lg flex items-center justify-center"
-                  style={{ background: 'rgba(0,229,160,0.12)', border: '1px solid rgba(0,229,160,0.25)' }}
-                >
+                <div className="w-7 h-7 rounded-lg flex items-center justify-center"
+                  style={{ background: 'rgba(0,229,160,0.12)', border: '1px solid rgba(0,229,160,0.25)' }}>
                   <TrendingUp size={13} className="text-emerald-400" />
                 </div>
-                <span className="font-['Syne',sans-serif] font-[700] text-[14px] text-white">
-                  Why Growth Next?
-                </span>
+                <span className="font-['Syne',sans-serif] font-[700] text-[14px] text-white">Why Growth Next?</span>
               </div>
               {[
                 'Free strategy audit — no strings attached',
@@ -396,23 +398,19 @@ export default function Contact() {
               ))}
             </div>
 
-            {/* Response time badge */}
-            <div
-              className="rounded-2xl border border-white/[0.06] p-5 flex items-center gap-4"
-              style={{ background: 'rgba(255,255,255,0.02)' }}
-            >
+            {/* Response time */}
+            <div className="rounded-2xl border border-white/[0.06] p-5 flex items-center gap-4"
+              style={{ background: 'rgba(255,255,255,0.02)' }}>
               <div className="relative flex-shrink-0">
                 <div className="w-10 h-10 rounded-full flex items-center justify-center font-['Syne',sans-serif] font-[800] text-[13px] text-[#080808]"
-                  style={{ background: 'linear-gradient(135deg,#00e5a0,#00b8ff)' }}>
-                  4h
-                </div>
+                  style={{ background: 'linear-gradient(135deg,#00e5a0,#00b8ff)' }}>4h</div>
                 <span className="absolute -top-0.5 -right-0.5 w-3 h-3 rounded-full bg-emerald-400 border-2 border-[#080808]">
                   <span className="absolute inset-0 rounded-full bg-emerald-400 animate-ping opacity-60" />
                 </span>
               </div>
               <div>
                 <p className="font-['DM_Sans',sans-serif] text-[13.5px] font-[500] text-white">Average response time</p>
-                <p className="font-['DM_Sans',sans-serif] text-[12px] text-white/35">Our team is online Mon–Sat, 10am–7pm IST</p>
+                <p className="font-['DM_Sans',sans-serif] text-[12px] text-white/35">Mon–Sat, 10am–7pm IST</p>
               </div>
             </div>
           </div>

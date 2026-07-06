@@ -42,14 +42,14 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
 
         {/* ── Logo ── */}
-        <a href="/" className="flex items-center gap-2.5 group" aria-label="Growth Next Home">
+        <a href="/" className="flex items-center gap-2.5 group" aria-label="Growth Nest Home">
           {/* Icon mark */}
           <div className="w-8 h-8 rounded-[8px] bg-gradient-to-br from-emerald-400 to-cyan-400 flex items-center justify-center flex-shrink-0">
             <TrendingUp size={15} strokeWidth={2.5} className="text-[#0a0a0a]" />
           </div>
           {/* Wordmark */}
           <span className="font-['',sans-serif] text-[19px] font-[800] tracking-[-0.3px] text-white leading-none">
-            Growth<span className="bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">Next</span>
+            Growth<span className="bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">Nest</span>
           </span>
         </a>
 
@@ -121,13 +121,13 @@ export default function Navbar() {
           <a
             href="tel:+91XXXXXXXXXX"
             className="flex items-center gap-2 text-[12.5px] text-white/40 hover:text-white/75 transition-colors duration-200"
-            aria-label="Call Growth Next"
+            aria-label="Call Growth Nest"
           >
             <span className="relative flex h-[7px] w-[7px]">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-60" />
               <span className="relative inline-flex h-[7px] w-[7px] rounded-full bg-emerald-400" />
             </span>
-            +91 XXXXX XXXXX
+            +91 6264745500
           </a>
 
           {/* CTA */}

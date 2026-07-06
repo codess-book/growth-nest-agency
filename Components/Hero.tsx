@@ -195,7 +195,7 @@ export default function Hero() {
               className={`text-[17px] text-white/45 leading-[1.75] max-w-[500px] mb-10 font-['DM_Sans',sans-serif] transition-all duration-700 ${ready ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
               style={{ transitionDelay: '0.25s' }}
             >
-              Growth Next is a performance-first digital agency. We combine
+              Growth Nest is a performance-first digital agency. We combine
               data-driven strategy with bold creative to help ambitious brands
               dominate their market — faster.
             </p>

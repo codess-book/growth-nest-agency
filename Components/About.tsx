@@ -122,7 +122,7 @@ export default function About() {
               className="reveal font-['DM_Sans',sans-serif] text-[16px] text-white/45 leading-[1.85] mb-8 max-w-[500px]"
               style={{ opacity: 0, transform: 'translateY(24px)', transition: 'all 0.7s ease 0.2s' }}
             >
-              Growth Next was built on a simple belief — most agencies focus on activity, not outcomes.
+              Growth Nest was built on a simple belief — most agencies focus on activity, not outcomes.
               We do the opposite. Every strategy, every campaign, every creative is engineered
               to produce measurable, compounding growth for your business.
             </p>
@@ -206,7 +206,7 @@ export default function About() {
                     </div>
                     <div>
                       <div className="font-['DM_Sans',sans-serif] text-[13px] font-[500] text-white">yukta Daswani</div>
-                      <div className="font-['DM_Sans',sans-serif] text-[11px] text-white/35">Founder, Growth Next</div>
+                      <div className="font-['DM_Sans',sans-serif] text-[11px] text-white/35">Founder, Growth Nest</div>
                     </div>
                   </div>
                 </div>

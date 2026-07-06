@@ -13,10 +13,11 @@ const services = [
 const company = [
   'About Us',
   'Our Process',
-  'Case Studies',
-  'Blog',
-  'Careers',
-  'Privacy Policy',
+  'Portfolio'
+  // 'Case Studies',
+  // 'Blog',
+  // 'Careers',
+  // 'Privacy Policy',
 ]
 
 const socials = [
@@ -82,7 +83,7 @@ export default function Footer() {
                 Growth<span
                   className="bg-clip-text text-transparent"
                   style={{ backgroundImage: 'linear-gradient(90deg,#00e5a0,#00b8ff)' }}
-                >Next</span>
+                >Nest</span>
               </span>
             </a>
 
@@ -172,7 +173,7 @@ export default function Footer() {
                   <div className="w-8 h-8 rounded-lg bg-white/[0.04] border border-white/[0.07] flex items-center justify-center flex-shrink-0 group-hover:border-emerald-400/30 group-hover:bg-emerald-400/[0.06] transition-all duration-200">
                     <Phone size={12} className="text-emerald-400" />
                   </div>
-                  <span className="pt-1.5">+91 XXXXX XXXXX</span>
+                  <span className="pt-1.5">+91 6264745500</span>
                 </a>
               </li>
               <li>
@@ -196,31 +197,14 @@ export default function Footer() {
               </li>
             </ul>
 
-            {/* Newsletter mini */}
-            <div className="bg-white/[0.03] border border-white/[0.07] rounded-2xl p-4">
-              <p className="font-['DM_Sans',sans-serif] text-[12px] text-white/50 mb-3">Get growth tips in your inbox</p>
-              <div className="flex gap-2">
-                <input
-                  type="email"
-                  placeholder="your@email.com"
-                  className="flex-1 bg-white/[0.05] border border-white/[0.08] rounded-xl px-3 py-2 text-[12px] text-white/70 placeholder:text-white/20 outline-none focus:border-emerald-400/40 transition-colors font-['DM_Sans',sans-serif]"
-                />
-                <button
-                  className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0 transition-all duration-200 hover:opacity-90"
-                  style={{ background: 'linear-gradient(135deg,#00e5a0,#00b8ff)' }}
-                  aria-label="Subscribe"
-                >
-                  <ArrowUpRight size={13} className="text-[#080808]" />
-                </button>
-              </div>
-            </div>
+            
           </div>
         </div>
 
         {/* ── Bottom bar ── */}
         <div className="pt-7 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="font-['DM_Sans',sans-serif] text-[12px] text-white/25">
-            © {year} Growth Next Digital. All rights reserved.
+            © {year} Growth Nest Digital. All rights reserved.
           </p>
 
           <div className="flex items-center gap-1 font-['DM_Sans',sans-serif] text-[12px] text-white/20">
