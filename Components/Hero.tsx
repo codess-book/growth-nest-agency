@@ -223,7 +223,7 @@ export default function Hero() {
 
             {/* Stats row */}
             <div
-              className={`grid grid-cols-2 sm:grid-cols-4 gap-4 transition-all duration-700 ${ready ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
+              className={`grid grid-cols-2 sm:grid-cols-4 gap-4 mb-4 transition-all duration-700 ${ready ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
               style={{ transitionDelay: '0.45s' }}
             >
               {stats.map(({ value, label, icon: Icon }) => (
@@ -234,9 +234,43 @@ export default function Hero() {
                 </div>
               ))}
             </div>
+
+            {/* MOBILE — animated floating cards (only shown below lg) */}
+            <div
+              className={`grid lg:hidden grid-cols-3 gap-3 mt-6 transition-all duration-700 ${ready ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
+              style={{ transitionDelay: '0.55s' }}
+            >
+              {floatingCards.map(({ icon: Icon, label, value, sub, color, border, iconColor, delay }, i) => (
+                <div
+                  key={label}
+                  className={`relative rounded-2xl p-3 bg-gradient-to-br ${color} border ${border} backdrop-blur-sm overflow-hidden`}
+                  style={{
+                    animation: `floatMobile 3.2s ease-in-out infinite`,
+                    animationDelay: delay,
+                    willChange: 'transform',
+                  }}
+                >
+                  {/* soft pulsing glow behind icon, keeps it feeling alive on small screens */}
+                  <span
+                    className="absolute -top-4 -right-4 w-14 h-14 rounded-full blur-xl opacity-40"
+                    style={{
+                      background: i === 0 ? '#00e5a0' : i === 1 ? '#22d3ee' : '#fbbf24',
+                      animation: `glowPulse 2.4s ease-in-out infinite`,
+                      animationDelay: delay,
+                    }}
+                  />
+                  <div className="relative flex items-center gap-1.5 mb-1.5">
+                    <Icon size={12} className={iconColor} />
+                    <span className="text-[9.5px] text-white/45 font-['DM_Sans',sans-serif] truncate">{label}</span>
+                  </div>
+                  <div className="relative font-['Syne',sans-serif] font-[700] text-[15px] text-white leading-none mb-1 truncate">{value}</div>
+                  <div className="relative text-[9px] text-white/35 font-['DM_Sans',sans-serif] truncate">{sub}</div>
+                </div>
+              ))}
+            </div>
           </div>
 
-          {/* RIGHT — visual card stack */}
+          {/* RIGHT — visual card stack (desktop only) */}
           <div
             className={`hidden lg:block relative h-[520px] transition-all duration-1000 ${ready ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'}`}
             style={{ transitionDelay: '0.5s' }}
@@ -314,6 +348,14 @@ export default function Hero() {
         @keyframes float {
           0%, 100% { transform: translateY(0px);  }
           50%       { transform: translateY(-10px); }
+        }
+        @keyframes floatMobile {
+          0%, 100% { transform: translateY(0px) scale(1); }
+          50%       { transform: translateY(-6px) scale(1.02); }
+        }
+        @keyframes glowPulse {
+          0%, 100% { opacity: 0.25; transform: scale(1); }
+          50%       { opacity: 0.55; transform: scale(1.15); }
         }
         @keyframes marquee {
           from { transform: translateX(0); }
