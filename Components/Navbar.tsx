@@ -54,7 +54,7 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
         {/* ── Logo ── */}
         <Link
-          href="/"
+          href="#home"
           className="flex items-center gap-3 group"
           aria-label="Growth Next Home"
         >
@@ -84,8 +84,8 @@ export default function Navbar() {
             </div>
           </div>
 
-          {/* Wordmark next to the circle */}
-          <span className="hidden sm:block font-sans text-[19px] font-[800] tracking-[-0.3px] text-white leading-none">
+          {/* Wordmark next to the circle — visible on all screen sizes */}
+          <span className="block font-sans text-[16px] sm:text-[19px] font-[800] tracking-[-0.3px] text-white leading-none whitespace-nowrap">
             Growth
             <span className="bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">
               Next

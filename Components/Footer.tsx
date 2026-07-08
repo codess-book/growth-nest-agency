@@ -1,80 +1,128 @@
-'use client'
-import { TrendingUp, Mail, Phone, ChevronRight } from 'lucide-react'
-import PrivacyPolicyModal from './privacy-policy';``
-const InstagramIcon = ({ size = 14, className = '' }: { size?: number; className?: string }) => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" width={size} height={size} className={className}>
-    <rect x="2" y="2" width="20" height="20" rx="5"/>
-    <circle cx="12" cy="12" r="4"/>
-    <circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" stroke="none"/>
+"use client";
+import { TrendingUp, Mail, Phone, ChevronRight } from "lucide-react";
+import PrivacyPolicyModal from "./privacy-policy";
+``;
+const InstagramIcon = ({
+  size = 14,
+  className = "",
+}: {
+  size?: number;
+  className?: string;
+}) => (
+  <svg
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="1.8"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    width={size}
+    height={size}
+    className={className}
+  >
+    <rect x="2" y="2" width="20" height="20" rx="5" />
+    <circle cx="12" cy="12" r="4" />
+    <circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" stroke="none" />
   </svg>
-)
+);
 
 const services = [
-  'Social Media Marketing',
-  'SEO',
-  'Content Marketing',
-  'Blog Writing',
-  'Paid Advertising',
-  'Content Planning',
-]
+  "Social Media Marketing",
+  "SEO",
+  "Content Marketing",
+  "Blog Writing",
+  "Paid Advertising",
+  "Content Planning",
+];
 
 const company = [
-  { label: 'About Us', href: '#about' },
-  { label: 'Our Process', href: '#about' },
-  { label: 'Portfolio', href: '#portfolio' },
-]
+  { label: "About Us", href: "#about" },
+  { label: "Our Process", href: "#about" },
+  { label: "Portfolio", href: "#portfolio" },
+];
 
 // ⚠️ Only Instagram was confirmed by the client. Removed Facebook/LinkedIn/YouTube
 // since they all pointed to '#' — add them back once she gives real profile links.
 const socials = [
   {
-    href: 'https://instagram.com/digitalmarketer.jivika', label: 'Instagram',
-    svg: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="w-[14px] h-[14px]"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" stroke="none"/></svg>
+    href: "https://instagram.com/digitalmarketer.jivika",
+    label: "Instagram",
+    svg: (
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        className="w-[14px] h-[14px]"
+      >
+        <rect x="2" y="2" width="20" height="20" rx="5" />
+        <circle cx="12" cy="12" r="4" />
+        <circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" stroke="none" />
+      </svg>
+    ),
   },
-]
+];
 
 export default function Footer() {
-  const year = new Date().getFullYear()
+  const year = new Date().getFullYear();
 
   return (
     <footer className="relative bg-[#080808] overflow-hidden">
-
       {/* ── top glow line ── */}
       <div
         className="absolute top-0 left-0 right-0 h-px"
-        style={{ background: 'linear-gradient(90deg, transparent, rgba(0,229,160,0.35) 50%, transparent)' }}
+        style={{
+          background:
+            "linear-gradient(90deg, transparent, rgba(0,229,160,0.35) 50%, transparent)",
+        }}
       />
 
       {/* ── background radial ── */}
       <div
         className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[700px] h-[400px] pointer-events-none"
-        style={{ background: 'radial-gradient(ellipse at bottom, rgba(0,229,160,0.05) 0%, transparent 65%)' }}
+        style={{
+          background:
+            "radial-gradient(ellipse at bottom, rgba(0,229,160,0.05) 0%, transparent 65%)",
+        }}
       />
 
       {/* ── Main footer grid ── */}
       <div className="relative z-10 max-w-7xl mx-auto px-6 pt-14 pb-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[1.8fr_1fr_1fr_1.2fr] gap-12 pb-12 border-b border-white/[0.06]">
-
           {/* Brand col */}
           <div>
             {/* Logo */}
             <a href="/" className="inline-flex items-center gap-2.5 mb-5">
               <div
                 className="w-8 h-8 rounded-[8px] flex items-center justify-center flex-shrink-0"
-                style={{ background: 'linear-gradient(135deg,#00e5a0,#00b8ff)' }}
+                style={{
+                  background: "linear-gradient(135deg,#00e5a0,#00b8ff)",
+                }}
               >
-                <TrendingUp size={15} strokeWidth={2.5} className="text-[#080808]" />
+                <TrendingUp
+                  size={15}
+                  strokeWidth={2.5}
+                  className="text-[#080808]"
+                />
               </div>
               <span className="font-['',sans-serif] text-[19px] font-[800] tracking-[-0.3px] text-white">
-                Growth<span
+                Growth
+                <span
                   className="bg-clip-text text-transparent"
-                  style={{ backgroundImage: 'linear-gradient(90deg,#00e5a0,#00b8ff)' }}
-                >Next</span>
+                  style={{
+                    backgroundImage: "linear-gradient(90deg,#00e5a0,#00b8ff)",
+                  }}
+                >
+                  Next
+                </span>
               </span>
             </a>
 
             <p className="font-['DM_Sans',sans-serif] text-[14px] text-white/40 leading-[1.8] max-w-[260px] mb-7">
-              Grow Smarter. Market Better. Customized digital marketing strategies that drive real, measurable results.
+              Grow Smarter. Market Better. Customized digital marketing
+              strategies that drive real, measurable results.
             </p>
 
             {/* Socials */}
@@ -100,13 +148,16 @@ export default function Footer() {
               Services
             </h4>
             <ul className="flex flex-col gap-2">
-              {services.map(s => (
+              {services.map((s) => (
                 <li key={s}>
                   <a
                     href="#services"
                     className="group inline-flex items-center gap-1.5 font-['DM_Sans',sans-serif] text-[13.5px] text-white/40 hover:text-white transition-colors duration-200"
                   >
-                    <ChevronRight size={11} className="text-emerald-400/0 group-hover:text-emerald-400/80 -translate-x-1 group-hover:translate-x-0 transition-all duration-200" />
+                    <ChevronRight
+                      size={11}
+                      className="text-emerald-400/0 group-hover:text-emerald-400/80 -translate-x-1 group-hover:translate-x-0 transition-all duration-200"
+                    />
                     {s}
                   </a>
                 </li>
@@ -116,27 +167,27 @@ export default function Footer() {
 
           {/* Company col */}
           <div>
-  <h4 className="font-['Syne',sans-serif] text-[11px] font-[700] tracking-[3px] uppercase text-white/50 mb-6">
-    Company
-  </h4>
+            <h4 className="font-['Syne',sans-serif] text-[11px] font-[700] tracking-[3px] uppercase text-white/50 mb-6">
+              Company
+            </h4>
 
-  <ul className="flex flex-col gap-2">
-    {company.map((item) => (
-      <li key={item.label}>
-        <a
-          href={item.href}
-          className="group inline-flex items-center gap-1.5 font-['DM_Sans',sans-serif] text-[13.5px] text-white/40 hover:text-white transition-colors duration-200"
-        >
-          <ChevronRight
-            size={11}
-            className="text-emerald-400/0 group-hover:text-emerald-400/80 -translate-x-1 group-hover:translate-x-0 transition-all duration-200"
-          />
-          {item.label}
-        </a>
-      </li>
-    ))}
-  </ul>
-</div>
+            <ul className="flex flex-col gap-2">
+              {company.map((item) => (
+                <li key={item.label}>
+                  <a
+                    href={item.href}
+                    className="group inline-flex items-center gap-1.5 font-['DM_Sans',sans-serif] text-[13.5px] text-white/40 hover:text-white transition-colors duration-200"
+                  >
+                    <ChevronRight
+                      size={11}
+                      className="text-emerald-400/0 group-hover:text-emerald-400/80 -translate-x-1 group-hover:translate-x-0 transition-all duration-200"
+                    />
+                    {item.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
 
           {/* Contact col */}
           <div>
@@ -185,24 +236,24 @@ export default function Footer() {
         </div>
 
         {/* ── Bottom bar ── */}
-       <div className="pt-7 flex flex-col sm:flex-row items-center justify-between gap-4">
-  <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-4 text-center sm:text-left">
-    <p className="font-['DM_Sans',sans-serif] text-[12px] text-white/25">
-      © {year} Growth Next. All rights reserved.
-    </p>
+        <div className="pt-7 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-4 text-center sm:text-left">
+            <p className="font-['DM_Sans',sans-serif] text-[12px] text-white/25">
+              © {year} Growth Next. All rights reserved.
+            </p>
 
-    <p className="font-['DM_Sans',sans-serif] text-[12px] text-white/25">
-      Designed & developed by{" "}
-      <a
-        href="https://instagram.com/codes.book"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="text-white/45 hover:text-emerald-400 transition-colors duration-200"
-      >
-        codes.book
-      </a>
-    </p>
-  </div>
+            <p className="font-['DM_Sans',sans-serif] text-[12px] text-white/25">
+              Designed & developed by{" "}
+              <a
+                href="https://instagram.com/codes.book"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white/45 hover:text-emerald-400 transition-colors duration-200"
+              >
+                codes.book
+              </a>
+            </p>
+          </div>
 
           <div className="flex gap-5">
             <PrivacyPolicyModal />
@@ -210,5 +261,5 @@ export default function Footer() {
         </div>
       </div>
     </footer>
-  )
+  );
 }
