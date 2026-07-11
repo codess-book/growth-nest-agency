@@ -69,7 +69,7 @@ export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="relative bg-[#080808] overflow-hidden">
+    <footer className="relative bg-transparent overflow-hidden">
       {/* ── top glow line ── */}
       <div
         className="absolute top-0 left-0 right-0 h-px"
