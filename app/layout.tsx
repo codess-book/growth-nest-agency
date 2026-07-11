@@ -3,7 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import WhatsAppFloat from "@/Components/Whatsapp";
 import InstagramFloat from "@/Components/instagramfloats";
-
+import SiteAmbience from "@/Components/siteAmbience";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -21,7 +21,12 @@ export const metadata: Metadata = {
     "Growth Next helps businesses establish a strong digital presence through customized SEO, Social Media Marketing, Content Marketing, Blog Writing, Paid Advertising, and Content Planning strategies.",
   keywords:
     "digital marketing agency, SEO services, social media marketing, content marketing, paid advertising, Growth Next",
-  openGraph: {
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/icon.png",
+    apple: "/apple-icon.png",
+  },
+    openGraph: {
     title: "Growth Next | Digital Marketing Agency",
     description: "Grow Smarter. Market Better. Customized digital marketing strategies that drive real results.",
     url: "https://growthnext.in",
@@ -75,8 +80,11 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className="min-h-full flex flex-col">
-        {children}
+      <body className="min-h-full flex flex-col relative">
+        <SiteAmbience />
+        <div className="relative z-10 flex flex-col flex-1">
+          {children}
+        </div>
         <WhatsAppFloat />
         <InstagramFloat />
       </body>
