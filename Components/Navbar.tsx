@@ -9,6 +9,7 @@ import {
   PenTool,
 
   Megaphone,
+  Mail,
   
 } from "lucide-react";
 import Link from "next/link";
