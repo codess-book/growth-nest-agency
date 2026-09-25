@@ -13,22 +13,22 @@ const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
 });
-
 export const metadata: Metadata = {
   metadataBase: new URL("https://growthnext.in"),
   title: "Growth Next | Digital Marketing Agency",
   description:
-    "Growth Next helps businesses establish a strong digital presence through customized SEO, Social Media Marketing, Content Marketing, Blog Writing, Paid Advertising, and Content Planning strategies.",
+    "Growth Next helps businesses grow online with customized SEO, Social Media Marketing, Content Marketing, PPC, and Email Marketing strategies.",
   keywords:
-    "digital marketing agency, SEO services, social media marketing, content marketing, paid advertising, Growth Next",
+    "digital marketing agency, SEO services, social media marketing, content marketing, PPC advertising, email marketing, Growth Next",
   icons: {
     icon: "/favicon.ico",
     shortcut: "/icon.png",
     apple: "/apple-icon.png",
   },
-    openGraph: {
+  openGraph: {
     title: "Growth Next | Digital Marketing Agency",
-    description: "Grow Smarter. Market Better. Customized digital marketing strategies that drive real results.",
+    description:
+      "Grow Smarter. Market Better. Customized digital marketing strategies that drive real results.",
     url: "https://growthnext.in",
     siteName: "Growth Next",
     type: "website",
@@ -44,7 +44,8 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Growth Next | Digital Marketing Agency",
-    description: "Grow Smarter. Market Better. Customized digital marketing strategies that drive real results.",
+    description:
+      "Grow Smarter. Market Better. Customized digital marketing strategies that drive real results.",
     images: ["/og-image.png"],
   },
 };
@@ -54,7 +55,7 @@ const jsonLd = {
   "@type": "ProfessionalService",
   name: "Growth Next",
   description:
-    "Digital marketing agency offering SEO, Social Media Marketing, Content Marketing, Blog Writing, Paid Advertising, and Content Planning.",
+    "Digital marketing agency offering Social Media Marketing, SEO, Content Marketing, PPC (Paid Advertisements), and Email Marketing.",
   url: "https://growthnext.in",
   telephone: "+91-6264745500",
   email: "daswaniyukta020@gmail.com",
@@ -62,7 +63,6 @@ const jsonLd = {
   areaServed: "IN",
   priceRange: "$$",
 };
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -82,9 +82,7 @@ export default function RootLayout({
       </head>
       <body className="min-h-full flex flex-col relative">
         <SiteAmbience />
-        <div className="relative z-10 flex flex-col flex-1">
-          {children}
-        </div>
+        <div className="relative z-10 flex flex-col flex-1">{children}</div>
         <WhatsAppFloat />
         <InstagramFloat />
       </body>
