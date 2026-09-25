@@ -1,7 +1,7 @@
 "use client";
 import { TrendingUp, Mail, Phone, ChevronRight } from "lucide-react";
 import PrivacyPolicyModal from "./privacy-policy";
-``;
+
 const InstagramIcon = ({
   size = 14,
   className = "",

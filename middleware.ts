@@ -1,7 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
 
-const maintenanceMode = true;
+const maintenanceMode = false;
 
+
+// after updating the website just change the maintenanceMode =false then commit push done
 export function middleware(request: NextRequest) {
 
   if (!maintenanceMode) {

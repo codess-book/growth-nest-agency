@@ -2,8 +2,21 @@
 @import "tailwindcss";
 
 :root {
+  /* Base */
   --background: #080808;
   --foreground: #ffffff;
+
+  /* Surfaces */
+  --surface: #141414;
+  --surface-2: #1e1e1e;
+
+  /* Accent – matches the navbar gold */
+  --accent: #e8a33d;
+  --accent-2: #d4912e;
+  --accent-soft: #2a241a;
+
+  /* Text */
+  --text-muted: #a0a0a0;
 }
 
 @theme inline {
@@ -15,8 +28,8 @@
 }
 
 body {
-  background:  var(--background);
-  color:       var(--foreground);
+  background: var(--background);
+  color: var(--foreground);
   font-family: 'DM Sans', sans-serif;
   -webkit-font-smoothing:  antialiased;
   -moz-osx-font-smoothing: grayscale;
