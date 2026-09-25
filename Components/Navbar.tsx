@@ -7,9 +7,9 @@ import {
   TrendingUp,
   Search,
   PenTool,
-  FileText,
+
   Megaphone,
-  CalendarDays,
+  
 } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
@@ -17,11 +17,9 @@ const services = [
   { label: "Social Media Marketing", icon: Megaphone, color: "text-pink-400" },
   { label: "SEO", icon: Search, color: "text-emerald-400" },
   { label: "Content Marketing", icon: PenTool, color: "text-blue-400" },
-  { label: "Blog Writing", icon: FileText, color: "text-orange-400" },
   { label: "Paid Advertising", icon: TrendingUp, color: "text-yellow-400" },
-  { label: "Content Planning", icon: CalendarDays, color: "text-purple-400" },
+  { label: "Email Marketing", icon: Mail, color: "text-purple-400" },
 ];
-
 const links = [
   { label: "Home", href: "#home" },
   { label: "Services", href: "#services", hasDropdown: true },

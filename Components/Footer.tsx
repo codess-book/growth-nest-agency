@@ -30,9 +30,8 @@ const services = [
   "Social Media Marketing",
   "SEO",
   "Content Marketing",
-  "Blog Writing",
   "Paid Advertising",
-  "Content Planning",
+  "Email Marketing",
 ];
 
 const company = [
