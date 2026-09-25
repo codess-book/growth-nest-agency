@@ -19,13 +19,13 @@ const OWNER_WHATSAPP = "916264745500"; // 91 + client's real number
 // ─────────────────────────────────────────
 
 const services = [
-  "Social Media Marketing",
+  "Social Media Marketing (SMM)",
   "SEO",
   "Content Marketing",
-  "Blog Writing",
-  "Paid Advertising",
-  "Content Planning",
-  "Other"
+  "PPC (Paid Advertisements)",
+  "E-mail Marketing",
+
+  "Other",
 ];
 
 const budgets = [

@@ -1,109 +1,139 @@
-'use client'
-import { useEffect, useRef } from 'react'
-import { ArrowUpRight, TrendingUp, Share2, PenTool, FileText, Megaphone, CalendarDays } from 'lucide-react'
+"use client";
+import { useEffect, useRef } from "react";
+import {
+  ArrowUpRight,
+  TrendingUp,
+  Share2,
+  PenTool,
+  FileText,
+  Megaphone,
+  CalendarDays,
+  Mail,
+} from "lucide-react";
 
 const services = [
   {
     Icon: TrendingUp,
-    title: 'Search Engine Optimization (SEO)',
-    desc: "Improve your website's visibility on search engines with our comprehensive SEO services. From keyword research and on-page optimization to technical SEO and local SEO, we help your business rank higher and attract organic traffic.",
-    tag: 'Most Popular',
-    accent: '#00e5a0',
-    size: 'large',
+    title: "Search Engine Optimization (SEO)",
+    desc: (
+      <>
+        We are the SEO agency in India that helps your business to rank higher
+        on Google whenever people search for your company name or the product
+        you deliver.
+        <span className="block mt-4">
+          We offer affordable, SEO-friendly services to startups so they can
+          raise their business and also get leads. With the help of the best SEO
+          tools, we provide you the organic traffic growth for your business.
+        </span>
+      </>
+    ),
+    tag: "Most Popular",
+    accent: "#00e5a0",
+    size: "large",
   },
   {
     Icon: Megaphone,
-    title: 'Social Media Marketing',
-    desc: 'Build a powerful online presence with strategic social media marketing. We create engaging content, manage your accounts, and develop campaigns that increase brand awareness and engagement.',
-    tag: 'Community Growth',
-    accent: '#00b8ff',
-    size: 'small',
+    title: "Social Media Marketing (SMM)",
+    desc: "Our social media marketing agency builds and attracts an audience for your product or service. We use social media marketing tools, which ultimately then convert them into customers, which increases our sales.",
+    tag: "Community Growth",
+    accent: "#00b8ff",
+    size: "small",
   },
   {
     Icon: PenTool,
-    title: 'Content Marketing',
-    desc: 'We create valuable, informative, and engaging content that builds trust, strengthens your brand authority, and converts visitors into loyal customers.',
-    tag: 'Brand Trust',
-    accent: '#a78bfa',
-    size: 'small',
-  },
-  {
-    Icon: FileText,
-    title: 'Blog Writing',
-    desc: 'SEO-optimized blog writing that educates your audience, improves search engine rankings, and establishes your brand as an industry expert.',
-    tag: 'SEO-Ready',
-    accent: '#00e5a0',
-    size: 'small',
+    title: "Content Marketing",
+    desc: "In our content marketing services we help you to convert a visitor into a lifetime customer. We make strategies for your business on how to create content that ranks on Google, which also includes blog writing services as well as copywriting services.",
+    tag: "Brand Trust",
+    accent: "#a78bfa",
+    size: "small",
   },
   {
     Icon: Share2,
-    title: 'Paid Advertising',
-    desc: 'Reach your ideal customers faster with high-performing Meta Ads and Google Ads campaigns focused on maximizing ROI and qualified leads.',
-    tag: 'Data-Driven',
-    accent: '#00b8ff',
-    size: 'small',
+    title: "Paid Advertising (PPC)",
+    desc: "At GrowthNext we offer PPC management services to our clients, which means we run paid Google as well as Meta ads for them. This helps businesses to raise more traffic and give better results.We are the Google Ads agency in India that focuses on maximizing the ROI and having better conversion rates for our client",
+    tag: "Data-Driven",
+    accent: "#00b8ff",
+    size: "small",
   },
   {
-    Icon: CalendarDays,
-    title: 'Content Planning',
-    desc: 'Customized monthly content calendars that align with your business goals, ensuring every piece of content supports your marketing strategy.',
-    tag: 'Consistency',
-    accent: '#a78bfa',
-    size: 'small',
+    Icon: Mail,
+    title: "Email Marketing",
+    desc: "The impact of email marketing services is huge because email marketing leads to larger reach, brand awareness, and daily reminders; improves sales; and generates traffic for your site.",
+    tag: "Direct Reach",
+    accent: "#00e5a0",
+    size: "small",
   },
-]
+];
 
 export default function Services() {
-  const ref = useRef<HTMLElement>(null)
+  const ref = useRef<HTMLElement>(null);
 
   useEffect(() => {
     const obs = new IntersectionObserver(
-      entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible') }),
-      { threshold: 0.08 }
-    )
-    ref.current?.querySelectorAll('.reveal').forEach(el => obs.observe(el))
-    return () => obs.disconnect()
-  }, [])
+      (entries) =>
+        entries.forEach((e) => {
+          if (e.isIntersecting) e.target.classList.add("visible");
+        }),
+      { threshold: 0.08 },
+    );
+    ref.current?.querySelectorAll(".reveal").forEach((el) => obs.observe(el));
+    return () => obs.disconnect();
+  }, []);
 
   return (
-    <section id="services" ref={ref} className="relative py-28 top-0 px-6 bg-[#080808] overflow-hidden">
-
+    <section
+      id="services"
+      ref={ref}
+      className="relative py-28 top-0 px-6 bg-[#080808] overflow-hidden"
+    >
       {/* subtle bg grid */}
       <div
         className="absolute inset-0 pointer-events-none opacity-[0.03]"
         style={{
-          backgroundImage: 'linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px)',
-          backgroundSize: '64px 64px',
+          backgroundImage:
+            "linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px)",
+          backgroundSize: "64px 64px",
         }}
       />
 
       {/* glow */}
       <div
         className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] pointer-events-none"
-        style={{ background: 'radial-gradient(ellipse, rgba(0,229,160,0.06) 0%, transparent 70%)' }}
+        style={{
+          background:
+            "radial-gradient(ellipse, rgba(0,229,160,0.06) 0%, transparent 70%)",
+        }}
       />
 
       <div className="relative z-10 max-w-7xl mx-auto">
-
         {/* ── Header ── */}
-        <div className="reveal flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16"
-          style={{ opacity: 0, transform: 'translateY(24px)', transition: 'opacity 0.7s ease, transform 0.7s ease' }}>
-
+        <div
+          className="reveal flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16"
+          style={{
+            opacity: 0,
+            transform: "translateY(24px)",
+            transition: "opacity 0.7s ease, transform 0.7s ease",
+          }}
+        >
           <div>
             <div className="inline-flex items-center gap-2 mb-4">
               <div className="w-6 h-px bg-emerald-400/60" />
               <span
                 className="font-['DM_Sans',sans-serif] text-[11px] font-[600] tracking-[3px] uppercase"
-                style={{ color: '#00e5a0' }}
+                style={{ color: "#00e5a0" }}
               >
                 What We Do
               </span>
             </div>
             <h2 className=" font-[800] text-[clamp(40px,5vw,72px)] leading-[1.02] tracking-[-2px] text-white">
-              Services That<br />
+              Services That
+              <br />
               <span
                 className="bg-clip-text text-transparent"
-                style={{ backgroundImage: 'linear-gradient(135deg,#00e5a0 0%,#00b8ff 50%,#a78bfa 100%)' }}
+                style={{
+                  backgroundImage:
+                    "linear-gradient(135deg,#00e5a0 0%,#00b8ff 50%,#a78bfa 100%)",
+                }}
               >
                 Actually Work.
               </span>
@@ -112,36 +142,53 @@ export default function Services() {
 
           <div className="max-w-sm">
             <p className="font-['DM_Sans',sans-serif] text-[14.5px] text-white/40 leading-[1.8]">
-              Full-suite digital marketing under one roof, customized to your goals, audience, and industry — every service is designed to compound.
+              Full-suite digital marketing under one roof, customized to your
+              goals, audience, and industry — every service is designed to
+              compound.
             </p>
             <a
               href="#contact"
               className="group inline-flex items-center gap-2 mt-5 font-['DM_Sans',sans-serif] text-[13px] font-[600] text-white/60 hover:text-white transition-colors duration-200"
             >
               Book your free consultation
-              <ArrowUpRight size={13} className="transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              <ArrowUpRight
+                size={13}
+                className="transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+              />
             </a>
           </div>
         </div>
 
         {/* ── Bento Grid ── */}
-        <div className="reveal grid grid-cols-1 md:grid-cols-3 gap-3"
-          style={{ opacity: 0, transform: 'translateY(32px)', transition: 'opacity 0.7s ease 0.15s, transform 0.7s ease 0.15s' }}>
-
+        <div
+          className="reveal grid grid-cols-1 md:grid-cols-3 gap-3"
+          style={{
+            opacity: 0,
+            transform: "translateY(32px)",
+            transition: "opacity 0.7s ease 0.15s, transform 0.7s ease 0.15s",
+          }}
+        >
           {/* ── Large card (SEO) ── */}
-          <div className="md:col-span-1 md:row-span-2 relative rounded-3xl p-8 flex flex-col justify-between min-h-[340px] group cursor-pointer overflow-hidden border border-white/[0.07] hover:border-emerald-400/25 transition-all duration-500"
-            style={{ background: 'linear-gradient(145deg, rgba(0,229,160,0.06) 0%, rgba(255,255,255,0.02) 100%)' }}>
-
+          <div
+            className="md:col-span-1 md:row-span-2 relative rounded-3xl p-8 flex flex-col justify-between min-h-[340px] group cursor-pointer overflow-hidden border border-white/[0.07] hover:border-emerald-400/25 transition-all duration-500"
+            style={{
+              background:
+                "linear-gradient(145deg, rgba(0,229,160,0.06) 0%, rgba(255,255,255,0.02) 100%)",
+            }}
+          >
             {/* hover glow */}
             <div
               className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl pointer-events-none"
-              style={{ background: 'radial-gradient(circle at 20% 20%, rgba(0,229,160,0.09), transparent 60%)' }}
+              style={{
+                background:
+                  "radial-gradient(circle at 20% 20%, rgba(0,229,160,0.09), transparent 60%)",
+              }}
             />
 
             {/* number */}
             <div
               className="absolute top-7 right-7 font-['Syne',sans-serif] font-[800] text-[80px] leading-none select-none pointer-events-none"
-              style={{ color: 'rgba(0,229,160,0.06)' }}
+              style={{ color: "rgba(0,229,160,0.06)" }}
             >
               01
             </div>
@@ -150,15 +197,26 @@ export default function Services() {
               {/* icon */}
               <div
                 className="w-12 h-12 rounded-2xl flex items-center justify-center mb-6"
-                style={{ background: 'rgba(0,229,160,0.12)', border: '1px solid rgba(0,229,160,0.2)' }}
+                style={{
+                  background: "rgba(0,229,160,0.12)",
+                  border: "1px solid rgba(0,229,160,0.2)",
+                }}
               >
-                <TrendingUp size={22} strokeWidth={1.8} style={{ color: '#00e5a0' }} />
+                <TrendingUp
+                  size={22}
+                  strokeWidth={1.8}
+                  style={{ color: "#00e5a0" }}
+                />
               </div>
 
               {/* tag */}
               <span
                 className="inline-block font-['DM_Sans',sans-serif] text-[10.5px] font-[700] tracking-[2.5px] uppercase px-3 py-1.5 rounded-full mb-5"
-                style={{ color: '#00e5a0', background: 'rgba(0,229,160,0.1)', border: '1px solid rgba(0,229,160,0.2)' }}
+                style={{
+                  color: "#00e5a0",
+                  background: "rgba(0,229,160,0.1)",
+                  border: "1px solid rgba(0,229,160,0.2)",
+                }}
               >
                 {services[0].tag}
               </span>
@@ -172,13 +230,16 @@ export default function Services() {
               <p className="font-['DM_Sans',sans-serif] text-[14px] text-white/45 leading-[1.75] mb-7">
                 {services[0].desc}
               </p>
-              <div
+              {/* <div
                 className="inline-flex items-center gap-2 font-['DM_Sans',sans-serif] text-[13px] font-[600] group-hover:gap-3 transition-all duration-300"
-                style={{ color: '#00e5a0' }}
+                style={{ color: "#00e5a0" }}
               >
                 Learn more
-                <ArrowUpRight size={14} className="group-hover:rotate-12 transition-transform duration-300" />
-              </div>
+                <ArrowUpRight
+                  size={14}
+                  className="group-hover:rotate-12 transition-transform duration-300"
+                />
+              </div> */}
             </div>
           </div>
 
@@ -188,14 +249,16 @@ export default function Services() {
               key={s.title}
               className="relative rounded-3xl p-6 flex flex-col justify-between min-h-[155px] group cursor-pointer overflow-hidden border border-white/[0.06] hover:border-white/[0.14] transition-all duration-500"
               style={{
-                background: 'rgba(255,255,255,0.02)',
+                background: "rgba(255,255,255,0.02)",
                 transitionDelay: `${i * 60}ms`,
               }}
             >
               {/* hover radial */}
               <div
                 className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl pointer-events-none"
-                style={{ background: `radial-gradient(circle at 0% 0%, ${s.accent}10, transparent 60%)` }}
+                style={{
+                  background: `radial-gradient(circle at 0% 0%, ${s.accent}10, transparent 60%)`,
+                }}
               />
 
               {/* bg number */}
@@ -203,22 +266,33 @@ export default function Services() {
                 className="absolute bottom-4 right-5 font-['Syne',sans-serif] font-[800] text-[52px] leading-none select-none pointer-events-none"
                 style={{ color: `${s.accent}08` }}
               >
-                {String(i + 2).padStart(2, '0')}
+                {String(i + 2).padStart(2, "0")}
               </div>
 
               <div className="relative z-10 flex items-start justify-between mb-4">
                 {/* icon */}
                 <div
                   className="w-9 h-9 rounded-xl flex items-center justify-center"
-                  style={{ background: `${s.accent}12`, border: `1px solid ${s.accent}25` }}
+                  style={{
+                    background: `${s.accent}12`,
+                    border: `1px solid ${s.accent}25`,
+                  }}
                 >
-                  <s.Icon size={16} strokeWidth={1.8} style={{ color: s.accent }} />
+                  <s.Icon
+                    size={16}
+                    strokeWidth={1.8}
+                    style={{ color: s.accent }}
+                  />
                 </div>
 
                 {/* tag */}
                 <span
                   className="font-['DM_Sans',sans-serif] text-[10px] font-[700] tracking-[2px] uppercase px-2.5 py-1 rounded-full"
-                  style={{ color: s.accent, background: `${s.accent}10`, border: `1px solid ${s.accent}25` }}
+                  style={{
+                    color: s.accent,
+                    background: `${s.accent}10`,
+                    border: `1px solid ${s.accent}25`,
+                  }}
                 >
                   {s.tag}
                 </span>
@@ -240,10 +314,11 @@ export default function Services() {
         <div
           className="reveal mt-6 rounded-3xl border border-white/[0.07] p-8 flex flex-col sm:flex-row items-center justify-between gap-6"
           style={{
-            background: 'linear-gradient(135deg, rgba(0,229,160,0.04) 0%, rgba(0,184,255,0.04) 100%)',
+            background:
+              "linear-gradient(135deg, rgba(0,229,160,0.04) 0%, rgba(0,184,255,0.04) 100%)",
             opacity: 0,
-            transform: 'translateY(24px)',
-            transition: 'opacity 0.7s ease 0.3s, transform 0.7s ease 0.3s',
+            transform: "translateY(24px)",
+            transition: "opacity 0.7s ease 0.3s, transform 0.7s ease 0.3s",
           }}
         >
           <div>
@@ -251,16 +326,20 @@ export default function Services() {
               Not sure which service you need?
             </p>
             <p className="font-['DM_Sans',sans-serif] text-[13.5px] text-white/40">
-              Book your free consultation — we'll map out exactly what will move the needle for your business.
+              Book your free consultation — we'll map out exactly what will move
+              the needle for your business.
             </p>
           </div>
           <a
             href="#contact"
             className="flex-shrink-0 group inline-flex items-center gap-2 font-['DM_Sans',sans-serif] font-[600] text-[13.5px] text-[#080808] px-6 py-3.5 rounded-full transition-all duration-300 hover:-translate-y-[2px] hover:shadow-[0_12px_32px_rgba(0,229,160,0.28)] whitespace-nowrap"
-            style={{ background: 'linear-gradient(135deg,#00e5a0,#00b8ff)' }}
+            style={{ background: "linear-gradient(135deg,#00e5a0,#00b8ff)" }}
           >
             Book Your Free Consultation
-            <ArrowUpRight size={14} className="transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            <ArrowUpRight
+              size={14}
+              className="transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+            />
           </a>
         </div>
       </div>
@@ -273,5 +352,5 @@ export default function Services() {
         }
       `}</style>
     </section>
-  )
+  );
 }
